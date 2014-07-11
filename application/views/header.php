@@ -21,9 +21,25 @@
 
     <script src="<?php echo asset_url("js/jquery.min.js")?>"></script>
     <script src="<?php echo asset_url("js/bootstrap.min.js")?>"></script>
+    <script src="<?php echo asset_url("js/script.js")?>"></script>
 </head>
 
 <body>
+    <div id="dynamicModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Fechar</span></button>
+                    <h4 class="modal-title" id="myModalLabel"></h4>
+                </div>
+                <div class="modal-body"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary">Salvar</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <header class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="container">
             <div class="navbar-header">
@@ -44,9 +60,6 @@
                                 <a href="#contact">Grupo de produtos</a>
                             </li>
                             <li>
-                                <a href="#about">Produtos</a>
-                            </li>
-                            <li>
                                 <a href="#contact">Fornecedores</a>
                             </li>
                             <li>
@@ -54,7 +67,11 @@
                             </li>
                         </ul>
                     </li>
-                    <li><a href="#contact">Relatórios</a>
+                    <li>
+                        <a href="#contact">Relatórios</a>
+                    </li>
+                    <li>
+                        <a href="#contact">Usuários</a>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
@@ -66,9 +83,9 @@
                         <ul class="dropdown-menu" role="menu">
                             <li><a href="#"><span class="glyphicon glyphicon-file"></span> Licença</a>
                             </li>
-                            <li><a href="#"><span class="glyphicon glyphicon-usd"></span> Doar</a>
-                            </li>
-                            <li><a href="#"><span class="glyphicon glyphicon-globe"></span> Página</a>
+                            <!--<li><a href="#"><span class="glyphicon glyphicon-usd"></span> Doar</a>
+                            </li> -->
+                            <li><a href="https://github.com/weslleih/almoxarifado"><span class="glyphicon glyphicon-globe"></span> Página</a>
                             </li>
                         </ul>
                     </li>

@@ -1,10 +1,14 @@
 <form role="form" class="form-inline">
-    <button type="button" class="btn btn-success" data-toggle="tooltip" title="Registrar entrada"><span class="glyphicon glyphicon-plus"></span> Produto</button>
-    <button type="button" class="btn btn-warning" data-toggle="tooltip" title="Estornar entrada"><span class="glyphicon glyphicon-repeat"></span> Estrada</button>
-    <button type="button" class="btn btn-warning" data-toggle="tooltip" title="Estornar saída"><span class="glyphicon glyphicon-repeat"></span> Saída</button>
+    <a type="button" class="btn btn-success" data-toggle="modal" data-target="#dynamicModal" href="index.php?/modal/newProduct"><span class="glyphicon glyphicon-plus"></span> Produto</a>
     <div class="form-group">
         <div class="input-group">
             <input type="search" class="form-control" id="inputProduto" placeholder="Nome do produto">
+            <a href="#" class="input-group-addon"><span class="glyphicon glyphicon-search"></span></a>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="input-group">
+            <input type="search" class="form-control" id="inputProduto" placeholder="Nome do Grupo">
             <a href="#" class="input-group-addon"><span class="glyphicon glyphicon-search"></span></a>
         </div>
     </div>
@@ -13,24 +17,26 @@
     <thead>
         <tr>
             <th class="las-collum"></th>
+            <th class="las-collum">
+                Quantidade
+            </th>
             <th>
                 Nome
             </th>
-            <th>
-                Quantidade
-            </th>
-            <th colspan="2">
+
+            <th class="las-collum" colspan="2">
                 Valor
             </th>
-            <th >
+            <th class="las-collum">
+                Grupo
             </th>
         </tr>
     </thead>
     <tbody>
         <tr>
             <td>
-               <div class="dropdown">
-                    <a data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-cog"></span></a>
+                <div class="dropdown">
+                    <a data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-tasks"></span></a>
                     <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
                         <li role="presentation">
                             <a href="#"><span class="glyphicon glyphicon-plus"></span> Entrada</a>
@@ -41,20 +47,107 @@
                         <li role="presentation">
                             <a href="#"><span class="glyphicon glyphicon-pencil"></span> Editar</a>
                         </li>
+                        <li role="presentation">
+                            <a href="#"><span class="glyphicon glyphicon-chevron-right"></span> Estornar saída</a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#"><span class="glyphicon glyphicon-chevron-left"></span> Estornar entrada</a>
+                        </li>
                     </ul>
                 </div>
             </td>
             <td>
-                Caneta
+                36 Un
             </td>
             <td>
-                36
+                Caneta
             </td>
+
             <td>
                 R$2,00
             </td>
             <td>
-                R$32,00
+                R$64,00
+            </td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="dropdown">
+                    <a data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-tasks"></span></a>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                        <li role="presentation">
+                            <a href="#"><span class="glyphicon glyphicon-plus"></span> Entrada</a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#"><span class="glyphicon glyphicon-minus"></span> Saída</a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#"><span class="glyphicon glyphicon-pencil"></span> Editar</a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#"><span class="glyphicon glyphicon-chevron-right"></span> Estornar saída</a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#"><span class="glyphicon glyphicon-chevron-left"></span> Estornar entrada</a>
+                        </li>
+                    </ul>
+                </div>
+            </td>
+            <td>
+                22 Kg
+            </td>
+            <td>
+                Farinha
+            </td>
+
+            <td>
+                R$2,00
+            </td>
+            <td>
+                R$64,00
+            </td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="dropdown">
+                    <a data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-tasks"></span></a>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                        <li role="presentation">
+                            <a href="#"><span class="glyphicon glyphicon-plus"></span> Entrada</a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#"><span class="glyphicon glyphicon-minus"></span> Saída</a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#"><span class="glyphicon glyphicon-pencil"></span> Editar</a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#"><span class="glyphicon glyphicon-chevron-right"></span> Estornar saída</a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#"><span class="glyphicon glyphicon-chevron-left"></span> Estornar entrada</a>
+                        </li>
+                    </ul>
+                </div>
+            </td>
+            <td>
+                <div>334 m²</div>
+            </td>
+            <td>
+                Tinta
+            </td>
+
+            <td>
+                R$2,00
+            </td>
+            <td>
+                R$64,00
             </td>
             <td>
 
