@@ -1,3 +1,5 @@
 system
 user_guide
-application\config\database.php
+application/config/database.php
+application/logs
+application/cache
