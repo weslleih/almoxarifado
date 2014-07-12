@@ -1,5 +1,3 @@
-<script src="<?php echo asset_url("js/chosen.jquery.min.js")?>"></script>
-<link rel="stylesheet" href="<?php echo asset_url("css/chosen.css")?>">
 <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Fechar</span>
     </button>
@@ -56,10 +54,4 @@
     <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
     <button type="button" class="btn btn-primary">Salvar</button>
 </div>
-<script type="text/javascript">
-    $(".chosen-select").chosen({width: "100%"})
-    $(".chosen-select").on('chosen:showing_dropdown', function(evt, params) {
-        $(".chosen-drop").first().css('width',$(".chosen-container").first().css('width'));
-    });
 
-</script>

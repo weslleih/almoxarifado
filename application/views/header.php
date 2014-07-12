@@ -22,6 +22,9 @@
     <script src="<?php echo asset_url("js/jquery.min.js")?>"></script>
     <script src="<?php echo asset_url("js/bootstrap.min.js")?>"></script>
     <script src="<?php echo asset_url("js/script.js")?>"></script>
+
+    <script src="<?php echo asset_url("js/chosen.jquery.min.js")?>"></script>
+    <link rel="stylesheet" href="<?php echo asset_url("css/chosen.css")?>">
 </head>
 
 <body>
@@ -49,7 +52,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Almoxarifado</a>
+                <a class="navbar-brand" href="<?php echo site_url();?>">Almoxarifado</a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -57,35 +60,35 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Estoque<span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
                             <li>
-                                <a href="#contact">Grupo de produtos</a>
+                                <a href="<?php echo site_url("groups");?>">Grupos de produtos</a>
                             </li>
                             <li>
-                                <a href="#contact">Fornecedores</a>
+                                <a href="<?php echo site_url("providers");?>">Fornecedores</a>
                             </li>
                             <li>
-                                <a href="#contact">Consumidores</a>
+                                <a href="<?php echo site_url("consumers");?>">Consumidores</a>
                             </li>
                         </ul>
                     </li>
                     <li>
-                        <a href="#contact">Relatórios</a>
+                        <a href="<?php echo site_url("report");?>">Relatórios</a>
                     </li>
                     <li>
-                        <a href="#contact">Usuários</a>
+                        <a href="<?php echo site_url("users");?>">Usuários</a>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="">Login</a>
+                        <a href="<?php echo site_url("session/login");?>" data-toggle="modal" data-target="#dynamicModal">Login</a>
                     </li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sobre<span class="caret"></span></a>
+                        <a href="#" >Sobre<span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="#"><span class="glyphicon glyphicon-file"></span> Licença</a>
+                            <li><a href="<?php echo site_url("license");?>" data-toggle="modal" data-target="#dynamicModal"><span class="glyphicon glyphicon-file"></span> Licença</a>
                             </li>
                             <!--<li><a href="#"><span class="glyphicon glyphicon-usd"></span> Doar</a>
                             </li> -->
-                            <li><a href="https://github.com/weslleih/almoxarifado"><span class="glyphicon glyphicon-globe"></span> Página</a>
+                            <li><a target="_blank" href="https://github.com/weslleih/almoxarifado"><span class="glyphicon glyphicon-globe"></span> Página</a>
                             </li>
                         </ul>
                     </li>

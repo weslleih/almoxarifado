@@ -8,3 +8,7 @@ body {
     width:1%;
     white-space:nowrap;
 }
+
+.table-header{
+    margin-bottom: 5px;
+}
