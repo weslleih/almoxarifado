@@ -23,23 +23,16 @@
     <script src="<?php echo asset_url("js/bootstrap.min.js")?>"></script>
     <script src="<?php echo asset_url("js/script.js")?>"></script>
 
-    <script src="<?php echo asset_url("js/chosen.jquery.min.js")?>"></script>
-    <link rel="stylesheet" href="<?php echo asset_url("css/chosen.css")?>">
+    <script src="<?php echo asset_url("js/select2.js")?>"></script>
+    <script src="<?php echo asset_url("js/select2_locale_pt-BR.js")?>"></script>
+    <link rel="stylesheet" href="<?php echo asset_url("css/select2.css")?>">
+    <link rel="stylesheet" href="<?php echo asset_url("css/select2-bootstrap.css")?>">
 </head>
 
 <body>
     <div id="dynamicModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Fechar</span></button>
-                    <h4 class="modal-title" id="myModalLabel"></h4>
-                </div>
-                <div class="modal-body"></div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary">Salvar</button>
-                </div>
             </div>
         </div>
     </div>
@@ -74,15 +67,20 @@
                         <a href="<?php echo site_url("report");?>">Relatórios</a>
                     </li>
                     <li>
-                        <a href="<?php echo site_url("users");?>">Usuários</a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Administração<span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>
+                                <a href="<?php echo site_url("users");?>">Usuários</a>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li>
                         <a href="<?php echo site_url("session/login");?>" data-toggle="modal" data-target="#dynamicModal">Login</a>
                     </li>
-                    <li class="dropdown">
-                        <a href="#" >Sobre<span class="caret"></span></a>
+                    <li>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sobre<span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
                             <li><a href="<?php echo site_url("license");?>" data-toggle="modal" data-target="#dynamicModal"><span class="glyphicon glyphicon-file"></span> Licença</a>
                             </li>

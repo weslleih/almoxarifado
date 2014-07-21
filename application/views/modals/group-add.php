@@ -6,8 +6,11 @@
 <div class="modal-body">
     <form class="form-horizontal" role="form">
         <div class="form-group">
-            <label for="inputNomeProduto" class="col-sm-2 control-label">Nome</label>
-            <div class="col-sm-10">
+            <label for="inputNomeProduto" class="col-sm-2 control-label">Produto</label>
+            <div class="col-sm-3">
+                <input type="text" class="form-control" id="inputNomeProduto" placeholder="Código">
+            </div>
+            <div class="col-sm-7">
                 <input type="text" class="form-control" id="inputNomeProduto" placeholder="Nome do grupo">
             </div>
         </div>

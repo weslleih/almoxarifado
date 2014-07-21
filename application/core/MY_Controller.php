@@ -8,5 +8,10 @@ class MY_Controller extends CI_Controller {
         $this->load->view($view, $data);
         $this->load->view("footer", $data);
     }
+    protected function jsonoutput($data){
+        $this->output
+        ->set_content_type('application/json')
+        ->set_output(json_encode($data));
+    }
 }
 ?>

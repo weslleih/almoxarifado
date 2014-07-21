@@ -2,10 +2,10 @@
 
     class Consumers extends MY_Controller {
     public function index()	{
-        $this->render('Consumers',null);
+        $this->render('consumers',null);
     }
 
-            public function add()	{
+   public function add()	{
         $this->load->view('modals/consumer-add',null);
     }
     public function edit()	{

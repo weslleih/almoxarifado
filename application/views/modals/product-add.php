@@ -6,15 +6,18 @@
 <div class="modal-body">
     <form class="form-horizontal" role="form">
         <div class="form-group">
-            <label for="inputNomeProduto" class="col-sm-2 control-label">Nome</label>
-            <div class="col-sm-10">
+            <label for="inputNomeProduto" class="col-sm-2 control-label">Produto</label>
+            <div class="col-sm-3">
+                <input type="text" class="form-control" id="inputNomeProduto" placeholder="Código">
+            </div>
+            <div class="col-sm-7">
                 <input type="text" class="form-control" id="inputNomeProduto" placeholder="Nome do produto">
             </div>
         </div>
         <div class="form-group">
             <label for="inputGrupo" class="col-sm-2 control-label">Grupo</label>
             <div class="col-sm-10">
-                    <select class="form-control chosen-select">
+                    <select class="form-control select2">
                       <option>asdasdasd</option>
                       <option>asdasdasd</option>
                       <option>asdasdasd</option>
@@ -25,21 +28,29 @@
         </div>
         <div class="form-group">
             <label for="inputUnidate" class="col-sm-2 control-label">Unidade</label>
-            <div class="col-sm-2">
-                <input type="text" class="form-control" id="inputGrupo" placeholder="Kg, m²">
-            </div>
-            <label for="inputPreco" class="col-sm-3 control-label">Preço unitário</label>
-            <div class="col-sm-3">
-                <div class="input-group">
-                    <div class="input-group-addon">R$</div>
-                    <input type="text" class="form-control" id="inputGrupo" placeholder="00,00">
-                </div>
+            <div class="col-sm-10">
+                <input type="text" class="form-control select2-new" type="hidden" id="inputGrupo" placeholder="Kg, m²">
             </div>
         </div>
         <div class="form-group">
-            <label for="inputGrupo" class="col-sm-2 control-label">Estoque mínimo</label>
-            <div class="col-sm-2">
-                <input type="number" class="form-control" id="inputGrupo" placeholder="">
+            <label for="inputGrupo" class="col-sm-2 control-label">Estoque</label>
+            <div class="col-sm-5">
+                <div class="input-group">
+                    <div class="input-group-addon"><span class="glyphicon glyphicon-arrow-down"></span></div>
+                    <input type="number" class="form-control" id="inputGrupo" placeholder="Mínimo">
+                </div>
+            </div>
+            <div class="col-sm-5">
+                <div class="input-group">
+                    <div class="input-group-addon"><span class="glyphicon glyphicon-arrow-up"></span></div>
+                    <input type="number" class="form-control" id="inputGrupo" placeholder="Máximo">
+                </div>
+            </div>
+        </div>
+         <div class="form-group">
+            <label for="inputGrupo" class="col-sm-2 control-label">CatMat</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="inputGrupo" placeholder="">
             </div>
         </div>
         <div class="form-group">

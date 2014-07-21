@@ -6,9 +6,12 @@
 <div class="modal-body">
     <form class="form-horizontal" role="form">
         <div class="form-group">
-            <label for="inputNomeProduto" class="col-sm-2 control-label">Nome</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" id="inputNomeProduto" placeholder="Nome fantasia">
+            <label for="inputNomeProduto" class="col-sm-2 control-label">Fornecedor</label>
+            <div class="col-sm-3">
+                <input type="text" class="form-control" id="inputNomeProduto" placeholder="Código">
+            </div>
+            <div class="col-sm-7">
+                <input type="text" class="form-control" id="inputNomeProduto" placeholder="Razão Social">
             </div>
         </div>
         <div class="form-group">
@@ -18,9 +21,49 @@
             </div>
         </div>
         <div class="form-group">
-            <label for="inputGrupo" class="col-sm-2 control-label">Razão Social</label>
+            <label for="inputGrupo" class="col-sm-2 control-label">Email</label>
             <div class="col-sm-10">
                 <input type="text" class="form-control" id="inputNomeProduto" placeholder="">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputGrupo" class="col-sm-2 control-label">Telefone</label>
+            <div class="col-sm-3">
+                <input type="text" class="form-control" id="inputNomeProduto" placeholder="">
+            </div>
+            <label for="inputGrupo" class="col-sm-2 control-label">Responsável</label>
+            <div class="col-sm-5">
+                <input type="text" class="form-control" id="inputNomeProduto" placeholder="">
+            </div>
+        </div>
+       <div class="form-group">
+            <label for="inputGrupo" class="col-sm-2 control-label">Telefone</label>
+            <div class="col-sm-3">
+                <input type="text" class="form-control" id="inputNomeProduto" placeholder="">
+            </div>
+            <label for="inputGrupo" class="col-sm-2 control-label">Responsável</label>
+            <div class="col-sm-5">
+                <input type="text" class="form-control" id="inputNomeProduto" placeholder="">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputGrupo" class="col-sm-2 control-label">Endereço</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="inputNomeProduto" placeholder="Rua, Av., etc - Número">
+            </div>
+            <label for="inputGrupo" class="col-sm-2 control-label">Bairro</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="inputNomeProduto" placeholder="">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputGrupo" class="col-sm-2 control-label">Cidade/UF</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="inputNomeProduto" placeholder="Cidade - UF">
+            </div>
+            <label for="inputGrupo" class="col-sm-2 control-label">CEP</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="inputNomeProduto" placeholder="00000-000">
             </div>
         </div>
     </form>

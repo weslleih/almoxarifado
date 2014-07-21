@@ -1,6 +1,6 @@
 <div class="table-header">
     <form role="form" class="form-inline">
-        <a type="button" class="btn btn-success" data-toggle="modal" data-target="#dynamicModal" href="users/add">
+        <a type="button" class="btn btn-success" data-toggle="modal" data-target="#dynamicModal" href="<?php echo site_url("users/add")?>">
             <span class="glyphicon glyphicon-plus"></span> Usuário</a>
         <div class="form-group">
             <div class="input-group">
@@ -22,41 +22,25 @@
         </tr>
     </thead>
     <tbody>
+        <?php if (isset($users)){ ?>
+            <?php foreach($users as $user){ ?>
         <tr>
             <td>
-                <a data-toggle="modal" data-target="#dynamicModal" href="users/edit"><span class="glyphicon glyphicon-pencil"></span></a>
+                <a data-toggle="modal" data-target="#dynamicModal" href="<?php echo site_url("users/edit/$user->iduser");?>"><span class="glyphicon glyphicon-pencil"></span></a>
             </td>
             <td>
-                Rafael Algusto dos Santos
+                <?php echo $user->name; ?>
             </td>
             <td>
-                10/3/2013 22:34
+                <?php if($user->lastlogin === null){
+                    echo '---';
+                }else{
+                    echo date('d/m/Y',$user->lastlogin);
+                }?>
             </td>
-            <td>Operador</td>
+            <td><?php echo $user->level;?></td>
         </tr>
-        <tr>
-            <td>
-                <a data-toggle="modal" data-target="#dynamicModal" href="users/edit"><span class="glyphicon glyphicon-pencil"></span></a>
-            </td>
-            <td>
-                Maria Aparecida Santana
-            </td>
-            <td>
-                10/3/2013 22:34
-            </td>
-            <td>Visitante</td>
-        </tr>
-        <tr>
-            <td>
-                <a data-toggle="modal" data-target="#dynamicModal" href="users/edit"><span class="glyphicon glyphicon-pencil"></span></a>
-            </td>
-            <td>
-                Guilherme Afonso Pena
-            </td>
-            <td>
-                10/3/2013 22:34
-            </td>
-            <td>Administrador</td>
-        </tr>
+            <?php } ?>
+        <?php }?>
     </tbody>
 </table>
