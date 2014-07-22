@@ -45,7 +45,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="<?php echo site_url();?>">Almoxarifado</a>
+                <a class="navbar-brand" href="<?php echo site_url("products");?>">Almoxarifado</a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -94,5 +94,12 @@
             </div>
             <!--/.nav-collapse -->
         </div>
+        <div class="slider">
+	       <div class="line"></div>
+            <div class="break dot1"></div>
+            <div class="break dot2"></div>
+            <div class="break dot3"></div>
+        </div>
     </header>
     <div class="container">
+

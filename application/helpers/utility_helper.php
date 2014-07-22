@@ -9,6 +9,12 @@ function insert_input_value($conext,$var_name){
     }
 }
 
+function insert_textarea_value($conext,$var_name){
+    if($conext->is_cached_var($var_name)){
+        echo $conext->get_cached_var($var_name);
+    }
+}
+
 function insert_option_value($conext,$var_name,$value){
     if($conext->is_cached_var($var_name)){
         if($conext->get_cached_var($var_name) == $value){

@@ -10,37 +10,15 @@
         </div>
     </form>
 </div>
-<table class="table table-hover table-bordered">
+<table class="table table-hover">
     <thead>
         <tr>
             <th class="las-collum"></th>
-            <th>
-                Nome
-            </th>
+            <th>Nome</th>
+            <th>Login</th>
             <th>Acesso</th>
             <th>Nível</th>
         </tr>
     </thead>
-    <tbody>
-        <?php if (isset($users)){ ?>
-            <?php foreach($users as $user){ ?>
-        <tr>
-            <td>
-                <a data-toggle="modal" data-target="#dynamicModal" href="<?php echo site_url("users/edit/$user->iduser");?>"><span class="glyphicon glyphicon-pencil"></span></a>
-            </td>
-            <td>
-                <?php echo $user->name; ?>
-            </td>
-            <td>
-                <?php if($user->lastlogin === null){
-                    echo '---';
-                }else{
-                    echo date('d/m/Y',$user->lastlogin);
-                }?>
-            </td>
-            <td><?php echo $user->level;?></td>
-        </tr>
-            <?php } ?>
-        <?php }?>
-    </tbody>
+        <?php  include('tbodys/users.php')?>
 </table>

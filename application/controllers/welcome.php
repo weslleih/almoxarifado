@@ -19,22 +19,7 @@ class Welcome extends MY_Controller {
 	 */
 	public function index()
 	{
-		$this->render('index',null);
-	}
-
-    public function groups()
-	{
-		$this->render('groups',null);
-	}
-
-    public function providers()
-	{
-		$this->render('providers',null);
-	}
-
-    public function consumers()
-	{
-		$this->render('consumers',null);
+		redirect('/products', 'refresh');
 	}
 }
 
