@@ -20,7 +20,7 @@
         <div class="form-group">
             <label for="inputGrupo" class="col-sm-2 control-label">Fornecedor</label>
             <div class="col-sm-3">
-                <select name="provider" class="form-control select2">
+                <select name="provider" class="form-control select2 select2-together">
                 <?php if(isset($providers)){?>
                     <?php foreach($providers as $provider){ ?>
                         <option value='<?php echo $provider->idprovider ?>'><?php echo $provider->idprovider ?></option>;
@@ -29,7 +29,7 @@
                 </select>
             </div>
             <div class="col-sm-7">
-                <select class="form-control select2">
+                <select class="form-control select2 select2-together">
                 <?php if(isset($providers)){ ?>
                     <?php foreach($providers as $provider){ ?>
                         <option value='<?php echo $provider->idprovider ?>'><?php echo $provider->name?></option>;

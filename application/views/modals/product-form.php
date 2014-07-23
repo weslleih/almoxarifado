@@ -20,7 +20,8 @@
         <div class="form-group">
             <label for="inputGrupo" class="col-sm-2 control-label">Grupo</label>
             <div class="col-sm-3">
-                <select name="group" class="form-control select2">
+                <select name="group" class="form-control select2 select2-together" placeholder="Código" required>
+                <option></option>
                 <?php if(isset($groups)){?>
                     <?php foreach($groups as $group){ ?>
                         <option value='<?php echo $group->idgroup ?>' <?php insert_option_value($this,"group",$group->idgroup)?>><?php echo $group->idgroup ?></option>";
@@ -29,7 +30,8 @@
                 </select>
             </div>
             <div class="col-sm-7">
-                <select class="form-control select2">
+                <select class="form-control select2 select2-together" placeholder="Código" required>
+                <option></option>
                 <?php if(isset($groups)){ ?>
                     <?php foreach($groups as $group){ ?>
                         <option value='<?php echo $group->idgroup ?>' <?php insert_option_value($this,"group",$group->idgroup)?>><?php echo $group->name?></option> ";

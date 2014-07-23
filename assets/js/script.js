@@ -25,6 +25,9 @@ $(document).ready(function (e) {
     $('#dynamicModal').on('loaded.bs.modal', function (e) {
         $("select.select2").select2();
         $("#dynamicModal .btn-send-form").first().click(sendModalForm);
+        $(".select2-together").on("change", function(e){
+            $(".select2-together").select2("val",$(e.currentTarget).val());
+        });
     })
     $(document).bind("ajaxComplete", function () {
         $(".slider").css('display','none');
@@ -82,4 +85,8 @@ function getPageTable(e){
     }).done(function (resp) {
         $("table tbody").first().append(resp);
     });
+}
+
+function changeTogether(elem){
+
 }
