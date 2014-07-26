@@ -11,7 +11,7 @@
         <div class="form-group">
             <label for="inputNomeProduto" class="col-sm-2 control-label">Produto</label>
             <div class="col-sm-3">
-                <input name="idproduct" type="text" class="form-control" id="inputNomeProduto" placeholder="Código" <?php insert_input_value($this,"idproduct");?>>
+                <input name="idproduct" type="text" class="form-control" id="inputNomeProduto" placeholder="Código" <?php insert_input_value($this,"idproduct");?> disabled>
             </div>
             <div class="col-sm-7">
                 <input name="name" type="text" class="form-control" id="inputNomeProduto" placeholder="Nome do produto" <?php insert_input_value($this,"name");?>>
@@ -20,11 +20,11 @@
         <div class="form-group">
             <label for="inputGrupo" class="col-sm-2 control-label">Grupo</label>
             <div class="col-sm-3">
-                <select name="group" class="form-control select2 select2-together" placeholder="Código" required>
+                <select name="idgroup" class="form-control select2 select2-together" placeholder="Código" required>
                 <option></option>
                 <?php if(isset($groups)){?>
                     <?php foreach($groups as $group){ ?>
-                        <option value='<?php echo $group->idgroup ?>' <?php insert_option_value($this,"group",$group->idgroup)?>><?php echo $group->idgroup ?></option>";
+                        <option value='<?php echo $group->idgroup ?>' <?php insert_option_value($this,"idgroup",$group->idgroup)?>><?php echo $group->idgroup ?></option>";
                     <?php } ?>
                 <?php } ?>
                 </select>
@@ -34,7 +34,7 @@
                 <option></option>
                 <?php if(isset($groups)){ ?>
                     <?php foreach($groups as $group){ ?>
-                        <option value='<?php echo $group->idgroup ?>' <?php insert_option_value($this,"group",$group->idgroup)?>><?php echo $group->name?></option> ";
+                        <option value='<?php echo $group->idgroup ?>' <?php insert_option_value($this,"idgroup",$group->idgroup)?>><?php echo $group->name?></option> ";
                     <?php } ?>
                 <?php } ?>
                 </select>

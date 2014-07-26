@@ -41,14 +41,14 @@
         <div class="form-group">
             <label for="inputGrupo" class="col-sm-2 control-label">Data</label>
             <div class="col-sm-10">
-                <input name="date" type="date" class="form-control" id="inputNomeProduto" placeholder="Nome do produto" value="<?php echo date('Y-m-d'); ?>">
+                <input name="date" type="text" class="form-control input-date" id="inputNomeProduto" value="<?php echo date('d/m/Y'); ?>">
             </div>
         </div>
         <div class="form-group">
             <label for="inputGrupo" class="col-sm-2 control-label">Quantidade</label>
             <div class="col-sm-10">
                 <div class="input-group">
-                    <input name="quantity" type="text" pattern="[0-9]+" class="form-control" id="inputGrupo">
+                    <input name="quantity" type="text" pattern="[0-9]+" class="form-control numeric quantity" id="inputGrupo">
                     <div class="input-group-addon"><?php echo $unit ?></div>
                 </div>
             </div>
@@ -59,13 +59,13 @@
             <div class="col-sm-5">
                 <div class="input-group">
                     <div class="input-group-addon">R$</div>
-                    <input name="value" type="text" class="form-control" id="inputGrupo" placeholder="00,00">
+                    <input name="value" type="text" class="form-control numeric value-uni" id="inputGrupo" placeholder="00,00">
                 </div>
             </div>
             <div class="col-sm-5">
                 <div class="input-group">
                     <div class="input-group-addon">R$</div>
-                    <input name="" type="text" class="form-control" id="inputGrupo" placeholder="00,00">
+                    <input name="" type="text" class="form-control numeric value-tot" id="inputGrupo" placeholder="00,00">
                 </div>
             </div>
         </div>
@@ -76,7 +76,7 @@
             </div>
             <label for="inputGrupo" class="col-sm-2 control-label">Data</label>
             <div class="col-sm-4">
-                <input name="empenhodate" type="date" class="form-control" id="inputGrupo" placeholder="00,00" value="<?php echo date('Y-m-d'); ?>">
+                <input name="empenhodate" type="text" class="form-control input-date" id="inputGrupo" value="<?php echo date('d/m/Y'); ?>">
             </div>
 
         </div>
@@ -87,7 +87,7 @@
             </div>
             <label for="inputGrupo" class="col-sm-2 control-label">Data</label>
             <div class="col-sm-4">
-                <input name="fiscnotedate" type="date" class="form-control" id="inputGrupo" placeholder="00,00" value="<?php echo date('Y-m-d'); ?>">
+                <input name="fiscnotedate" type="text" class="form-control input-date" id="inputGrupo" value="<?php echo date('d/m/Y'); ?>">
             </div>
         </div>
         <div class="form-group">

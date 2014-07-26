@@ -17,7 +17,7 @@ class Products extends MY_Controller {
         $data["action"] = site_url("products");
 
         $search = array("term" => $term = $this->input->post('term'),
-                        "group" =>$term = $this->input->post('group'));
+                        "idgroup" =>$term = $this->input->post('idgroup'));
 
         $data["products"] = $this->Product_model->get_list($page,20,$search);
 
@@ -57,7 +57,7 @@ class Products extends MY_Controller {
 
         $data["idproduct"] = $product->idproduct;
         $data["name"] = $product->name;
-        $data["group"] = $product->group;
+        $data["idgroup"] = $product->idgroup;
         $data["unit"] = $product->unit;
         $data["maxinvent"] = $product->maxinvent;
         $data["mininvent"] = $product->mininvent;
@@ -124,7 +124,7 @@ class Products extends MY_Controller {
 
         $this->form_validation->set_rules("idproduct", "Código", "trim|is_unic[product.idproduct]|xss_clean");
         $this->form_validation->set_rules("name", "Nome", "trim|required|xss_clean");
-        $this->form_validation->set_rules("group", "Grupo", "trim|required|xss_clean");
+        $this->form_validation->set_rules("idgroup", "Grupo", "trim|required|xss_clean");
         $this->form_validation->set_rules("unit", "Unidade", "trim|required|xss_clean");
         $this->form_validation->set_rules("maxinvent", "Estoque Máximo ", "trim|xss_clean");
         $this->form_validation->set_rules("mininvent", "Estoque Mínimo", "trim|xss_clean");
@@ -141,7 +141,7 @@ class Products extends MY_Controller {
             $data->error = $this->form_validation->error_array();;
 		}else{
             $product = array("name" => $this->input->post("name"),
-                         "group" => $this->input->post("group"),
+                         "idgroup" => $this->input->post("idgroup"),
                          "unit" => $this->input->post("unit"),
                          "maxinvent" => $this->input->post("maxinvent"),
                          "mininvent" => $this->input->post("mininvent"),
@@ -182,7 +182,7 @@ class Products extends MY_Controller {
         $this->form_validation->set_rules("idproduct", "Código","trim|required|is_unic_edit[product.idproduct,idproduct.$id]|xss_clean");
         $this->form_validation->set_rules("idproduct", "Código", "trim|is_unic[product.idproduct]|xss_clean");
         $this->form_validation->set_rules("name", "Nome", "trim|required|xss_clean");
-        $this->form_validation->set_rules("group", "Grupo", "trim|required|xss_clean");
+        $this->form_validation->set_rules("idgroup", "Grupo", "trim|required|xss_clean");
         $this->form_validation->set_rules("unit", "Unidade", "trim|required|xss_clean");
         $this->form_validation->set_rules("maxinvent", "Estoque Máximo ", "trim|xss_clean");
         $this->form_validation->set_rules("mininvent", "Estoque Mínimo", "trim|xss_clean");
@@ -200,7 +200,7 @@ class Products extends MY_Controller {
 		}else{
             $product = array("idproduct" => $this->input->post("idproduct"),
                           "name" => $this->input->post("name"),
-                         "group" => $this->input->post("group"),
+                         "idgroup" => $this->input->post("idgroup"),
                          "unit" => $this->input->post("unit"),
                          "maxinvent" => $this->input->post("maxinvent"),
                          "mininvent" => $this->input->post("mininvent"),
@@ -255,13 +255,13 @@ class Products extends MY_Controller {
 		}else{
             $product = array("idproduct" => $id,
                              "provider" => $this->input->post("provider"),
-                             "date" => $this->input->post("date"),
+                             "date" => convert_date($this->input->post("date")),
                              "quantity" => $this->input->post("quantity"),
                              "value" => (float)str_replace(",", ".",$this->input->post("value")),
                              "empenho" => $this->input->post("empenho"),
-                             "empenhodate" => $this->input->post("empenhodate"),
+                             "empenhodate" => convert_date($this->input->post("empenhodate")),
                              "fiscnote" => $this->input->post("fiscnote"),
-                             "fiscnotedate" => $this->input->post("fiscnotedate"),
+                             "fiscnotedate" => $this->convert_date($this->input->post("fiscnotedate")),
                              "obs" => $this->input->post("obs"),
                              "iduser" => 1);
 
@@ -311,16 +311,20 @@ class Products extends MY_Controller {
                              "consumer" => $this->input->post("consumer"),
                              "responsible" => $this->input->post("responsible"),
                              "quantity" => $this->input->post("quantity"),
-                             "date" => $this->input->post("date"),
+                             "date" => convert_date($this->input->post("date")),
                              "document" => $this->input->post("document"),
                              "iduser" => 1);
-
-            if($this->Product_model->add_output($product)){
+            $resul = $this->Product_model->add_output($product);
+            if($resul === true){
                 $data->success = true;
             }else{
                 $data->success = false;
                 $error = new stdClass();
-                $error->message = "Erro interno, problemas com o banco de dados.";
+                if($resul == 830){
+                    $error->message = "Estoque insuficiente.";
+                }else{
+                    $error->message = "Erro interno, problemas com o banco de dados.";
+                }
                 $data->error = $error;
             }
 		}

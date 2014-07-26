@@ -12,7 +12,7 @@
             </div>
         </div>
         <div class="form-group">
-            <select name="group" class="form-control select2" data-placeholder="Filtrar por grupo">
+            <select name="idgroup" class="form-control select2" data-placeholder="Filtrar por grupo">
                 <option value="0">Filtrar por grupo</option>
                 <?php
                 if(isset($groups)){
@@ -35,14 +35,14 @@
             <th>
                 Nome
             </th>
+            <th>
+                Grupo
+            </th>
             <th class="las-collum">
                 Quantidade
             </th>
             <th class="las-collum" colspan="2">
                 Valor
-            </th>
-            <th class="las-collum">
-                Grupo
             </th>
         </tr>
     </thead>

@@ -27,7 +27,7 @@ class Product_model extends MY_model {
     public function get_list($start = 0, $limit = 20,$search){
         $this->db->order_by("product.name");
         $this->db->select('*, product.name AS name, group.name AS gname', FALSE);
-        $this->db->join('group', 'group.idgroup = product.idproduct');
+        $this->db->join('group', 'group.idgroup = product.idgroup');
 
         if($search["term"]){
             if(is_numeric($search["term"])){
@@ -37,21 +37,23 @@ class Product_model extends MY_model {
             }
         }
 
-        if($search["group"]){
-            $this->db->where("product.idgroup",$search["group"]);
+        if($search["idgroup"]){
+            $this->db->where("product.idgroup",$search["idgroup"]);
         }
 
         $query = $this->db->get('product', $limit, $start);
-
         if ($query->num_rows() > 0){
             return $query->result();
         }
     }
 
     public function get_total($search){
-        if(!$search["term"] && !$search["group"]){
+        if(!$search["term"] && !$search["idgroup"]){
             return $this->db->count_all('product');
         }
+
+        $this->db->select('*, product.name AS name, group.name AS gname', FALSE);
+        $this->db->join('group', 'group.idgroup = product.idgroup');
 
         if($search["term"]){
             if(is_numeric($search["term"])){
@@ -60,8 +62,8 @@ class Product_model extends MY_model {
                 $this->db->like("product.name",$search["term"]);
             }
         }
-        if($search["group"]){
-            $this->db->where("product.idgroup",$search["group"]);
+        if($search["idgroup"]){
+            $this->db->where("product.idgroup",$search["idgroup"]);
         }
 
         $query = $this->db->get('product');

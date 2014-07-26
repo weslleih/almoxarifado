@@ -47,14 +47,14 @@
         <div class="form-group">
             <label for="inputNomeProduto" class="col-sm-2 control-label">Data</label>
             <div class="col-sm-10">
-                <input name="date" type="date" class="form-control" id="inputNomeProduto" value="<?php echo date('Y-m-d'); ?>">
+                <input name="date" type="text" class="form-control input-date" id="inputNomeProduto" value="<?php echo date('d/m/Y'); ?>">
             </div>
         </div>
         <div class="form-group">
             <label for="inputGrupo" class="col-sm-2 control-label">Quantidade</label>
             <div class="col-sm-10">
                 <div class="input-group">
-                    <input name="quantity" type="text" pattern="[0-9]+" class="form-control" id="inputGrupo">
+                    <input name="quantity" type="text" pattern="[0-9]+" class="form-control numeric quantity" id="inputGrupo">
                     <div class="input-group-addon"><?php echo $unit ?></div>
                 </div>
             </div>
@@ -65,13 +65,13 @@
             <div class="col-sm-5">
                 <div class="input-group">
                     <div class="input-group-addon">R$</div>
-                    <input name="value" type="text" class="form-control" id="inputGrupo" placeholder="00,00" disabled value="<?php echo number_format((float)$value, 2, ',', '');?>">
+                    <input name="value" type="text" class="form-control value-uni" id="inputGrupo" placeholder="00,00" disabled value="<?php echo number_format((float)$value, 2, ',', '');?>">
                 </div>
             </div>
             <div class="col-sm-5">
                 <div class="input-group">
                     <div class="input-group-addon">R$</div>
-                    <input name="" type="text" class="form-control" id="inputGrupo" placeholder="00,00" disabled>
+                    <input name="" type="text" class="form-control value-tot" id="inputGrupo" placeholder="00,00" disabled>
                 </div>
             </div>
         </div>

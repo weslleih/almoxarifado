@@ -8,7 +8,7 @@
         <div class="form-group">
             <label for="inputNomeProduto" class="col-sm-2 control-label">Consumidor</label>
             <div class="col-sm-3">
-                <input name="idconsumer" type="text" class="form-control" id="inputNomeProduto" placeholder="Código" <?php insert_input_value($this,"idconsumer");?>>
+                <input name="idconsumer" type="text" class="form-control" id="inputNomeProduto" placeholder="Código" <?php insert_input_value($this,"idconsumer");?> disabled>
             </div>
             <div class="col-sm-7">
                 <input name="name" type="text" class="form-control" id="inputNomeProduto" placeholder="Nome do consumidor" <?php insert_input_value($this,"name");?>>

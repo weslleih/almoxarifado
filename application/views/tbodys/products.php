@@ -41,6 +41,9 @@
                 <?php echo $product->name; ?>
             </td>
             <td>
+                <?php echo $product->gname; ?>
+            </td>
+            <td>
                 <?php echo "$product->quantity $product->unit"; ?>
             </td>
             <td>
@@ -48,9 +51,6 @@
             </td>
             <td>
                 <?php echo "R$".number_format($product->value*$product->quantity, 2, ',', ''); ?>
-            </td>
-            <td>
-                <?php echo $product->idgroup; ?>
             </td>
         </tr>
     <?php } ?>

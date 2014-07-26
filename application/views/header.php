@@ -22,11 +22,15 @@
     <script src="<?php echo asset_url("js/jquery.min.js")?>"></script>
     <script src="<?php echo asset_url("js/bootstrap.min.js")?>"></script>
     <script src="<?php echo asset_url("js/script.js")?>"></script>
+    <script src="<?php echo asset_url("js/numeric.js")?>"></script>
 
     <script src="<?php echo asset_url("js/select2.js")?>"></script>
     <script src="<?php echo asset_url("js/select2_locale_pt-BR.js")?>"></script>
     <link rel="stylesheet" href="<?php echo asset_url("css/select2.css")?>">
     <link rel="stylesheet" href="<?php echo asset_url("css/select2-bootstrap.css")?>">
+
+    <script src="<?php echo asset_url("js/bootstrap-datepicker.js")?>"></script>
+    <link rel="stylesheet" href="<?php echo asset_url("css/datepicker.css")?>">
 </head>
 
 <body>

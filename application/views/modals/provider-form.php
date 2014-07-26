@@ -11,7 +11,7 @@
         <div class="form-group">
             <label for="inputNomeProduto" class="col-sm-2 control-label">Fornecedor</label>
             <div class="col-sm-3">
-                <input name="idprovider" type="text" class="form-control" id="inputNomeProduto" placeholder="Código" <?php insert_input_value($this,"idprovider");?>>
+                <input name="idprovider" type="text" class="form-control" id="inputNomeProduto" placeholder="Código" <?php insert_input_value($this,"idprovider");?> disabled>
             </div>
             <div class="col-sm-7">
                 <input name="name" type="text" class="form-control" id="inputNomeProduto" placeholder="Nome/Razão Social" <?php insert_input_value($this,"name");?>>
