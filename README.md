@@ -1,11 +1,25 @@
-<<<<<<< HEAD
-Almoxarifado [ ![Codeship Status for weslleih/almoxarifado](https://www.codeship.io/projects/27988f90-f458-0131-3c84-22104e8563a8/status)](https://www.codeship.io/projects/28086)
-============
-
-Simples controle de estoque
-=======
 Almoxarifado
 ============
 
-Simples controle de estoque
->>>>>>> origin/master
+Simples controle de estoque.
+
+Recursos
+------------
+- Multi usuário com níveis hierárquicos 
+- Grupos de produtos
+- Fornecedores com dados de contato
+- Consumidores
+- Relatórios configuráveis
+- Log de alterações
+
+Requisitos
+------------
+### Servidor
+- Apache 2.2
+- PHP 5.3
+- MySQL 6
+
+### Cliente
+- Internet Explorer 10
+- Mozilla Firefox 4
+- Google Chrome 22
