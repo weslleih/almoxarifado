@@ -86,10 +86,6 @@
                     <li>
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sobre<span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="<?php echo site_url("license");?>" data-toggle="modal" data-target="#dynamicModal"><span class="glyphicon glyphicon-file"></span> Licença</a>
-                            </li>
-                            <!--<li><a href="#"><span class="glyphicon glyphicon-usd"></span> Doar</a>
-                            </li> -->
                             <li><a target="_blank" href="https://github.com/weslleih/almoxarifado"><span class="glyphicon glyphicon-globe"></span> Página</a>
                             </li>
                         </ul>
