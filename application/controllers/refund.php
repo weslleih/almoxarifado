@@ -67,16 +67,22 @@ class Refund extends MY_Controller {
         $this->load->library("pagination");
         $page = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
 
-        $data["products"] = $this->Product_model->get_input_list($id,$page,20,$this->input->post('term'));
+        $search['term'] = $this->input->post('term');
+        $search['product'] = $id;
 
-        $config["base_url"] = $data["action"] = site_url("refund/output");
-        $config["total_rows"] = $this->Product_model->get_total-input($id,$search);
+        $data["target"] = site_url("refund/ajaxoutput/$id");
+        $data["action"] = site_url("refund/output/$id");
+
+        $data["productoutputs"] = $this->Product_model->get_output_list($page,20,$search);
+
+        $config["base_url"] = site_url("refund/output");
+        $config["total_rows"] = $this->Product_model->get_outpu_total($search);
         $config["per_page"] = 20;
 
         $this->pagination->initialize($config);
 
         if ($this->input->is_ajax_request()) {
-            $this->load->view('tbodys/refund-output',$data);
+             $this->load->view('tbodys/refund-output',$data);
         }else{
             $this->render('refund-output',$data);
         }
@@ -97,14 +103,31 @@ class Refund extends MY_Controller {
         }else{
             $data["action"] = site_url("refund/ajaxinput/$id");
             $data["title"] = "Confirmação!";
-            $data["message"] = "Tem certeza que deseja exluir a entrada de código <strong>$id</strong>?";
+            $data["message"] = "Tem certeza que deseja estornar a entrada de código <strong>$id</strong>?";
 
             $this->load->view('modals/dialog',$data);
         }
     }
 
     public function ajaxoutput($id){
+        if($this->input->post('verification')){
+            $data = new stdClass();
+            if($this->Product_model->remove_output($id)){
+                $data->success = true;
+            }else{
+                $data->success = false;
+                $error = new stdClass();
+                $error->message = "Erro interno, problemas com o banco de dados.";
+                $data->error = $error;
+            }
+            $this->jsonoutput($data);
+        }else{
+            $data["action"] = site_url("refund/ajaxoutput/$id");
+            $data["title"] = "Confirmação!";
+            $data["message"] = "Tem certeza que deseja estornar a saída de código <strong>$id</strong>?";
 
+            $this->load->view('modals/dialog',$data);
+        }
 
     }
 }

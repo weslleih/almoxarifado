@@ -126,7 +126,6 @@ class Product_model extends MY_model {
                 }
             }
         }
-        print_r($this->db->last_query());
         $this->db->trans_complete();
         return false;
     }
@@ -160,6 +159,35 @@ class Product_model extends MY_model {
         }
      $this->db->trans_complete();
      return false;
+    }
+
+    public function remove_output($id){
+        $this->db->trans_start();
+
+        $this->db->select("*");
+        $this->db->where('id', $id);
+        $query = $this->db->get('productoutput');
+        if ($query->num_rows() > 0){
+            $output = $query->row();
+            $this->db->select("*");
+            $this->db->where('id', $output->product);
+            $query = $this->db->get('product');
+            if ($query->num_rows() > 0){
+                $product = $query->row();
+
+                $tot = $product->quantity + $output->quantity;
+                $avg = (($product->quantity*$product->value)+($output->quantity*$output->value))/ $tot;
+
+                $this->update($product->id,array("value" => $avg, "quantity" => $tot));
+                $this->db->delete('productoutput', array('id' => $id));
+                if($this->db->affected_rows() > 0){
+                    $this->db->trans_complete();
+                    return true;
+                }
+            }
+        }
+        $this->db->trans_complete();
+        return false;
     }
 
     public function get_input_list($start = 0, $limit = 20,$search){
@@ -199,6 +227,46 @@ class Product_model extends MY_model {
         }
 
         return $this->db->count_all_results('productinput');
+
+    }
+
+    public function get_output_list($start = 0, $limit = 20,$search){
+        $this->db->order_by("registered", "desc");
+        $this->db->select('*, consumer.id AS cid, productoutput.id AS id', FALSE);
+        $this->db->join('consumer', 'consumer.id = productoutput.consumer');
+
+        if($search["term"]){
+            $this->db->like("consumer.name",$search["term"]);
+        }
+
+        if($search["product"]){
+            $this->db->where("product",$search["product"]);
+        }
+
+        $query = $this->db->get('productoutput', $limit, $start);
+        if ($query->num_rows() > 0){
+            return $query->result();
+        }
+    }
+
+    public function get_outpu_total($search){
+        if(!$search["term"] && !$search["product"]){
+            return $this->db->count_all('product');
+        }
+
+        $this->db->order_by("registered", "desc");
+        $this->db->select('*, consumer.id AS pid, productoutput.id AS id', FALSE);
+        $this->db->join('consumer', 'consumer.id = productoutput.consumer');
+
+        if($search["term"]){
+            $this->db->like("consumer.name",$search["term"]);
+        }
+
+        if($search["product"]){
+            $this->db->where("product",$search["product"]);
+        }
+
+        return $this->db->count_all_results('productoutput');
 
     }
 

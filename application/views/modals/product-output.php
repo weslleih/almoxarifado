@@ -23,7 +23,7 @@
                 <select name="consumer" class="form-control select2 select2-together">
                 <?php if(isset($consumers)){?>
                     <?php foreach($consumers as $consumer){ ?>
-                        <option value='<?php echo $consumer->id ?>'><?php echo $consumer->idconsumer ?></option>;
+                        <option value='<?php echo $consumer->id ?>'><?php echo $consumer->id ?></option>;
                     <?php } ?>
                 <?php } ?>
                 </select>
