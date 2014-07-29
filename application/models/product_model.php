@@ -101,6 +101,35 @@ class Product_model extends MY_model {
         $this->db->trans_complete();
         return false;
     }
+    public function remove_input($id){
+        $this->db->trans_start();
+
+        $this->db->select("*");
+        $this->db->where('id', $id);
+        $query = $this->db->get('productinput');
+        if ($query->num_rows() > 0){
+            $input = $query->row();
+            $this->db->select("*");
+            $this->db->where('id', $input->product);
+            $query = $this->db->get('product');
+            if ($query->num_rows() > 0){
+                $product = $query->row();
+
+                $tot = $product->quantity - $input->quantity;
+                $avg = (($product->quantity*$product->value)-($input->quantity*$input->value))/ $tot;
+
+                $this->update($product->id,array("value" => $avg, "quantity" => $tot));
+                $this->db->delete('productinput', array('id' => $id));
+                if($this->db->affected_rows() > 0){
+                    $this->db->trans_complete();
+                    return true;
+                }
+            }
+        }
+        print_r($this->db->last_query());
+        $this->db->trans_complete();
+        return false;
+    }
 
     public function add_output($data){
         $this->db->trans_start();
@@ -131,6 +160,46 @@ class Product_model extends MY_model {
         }
      $this->db->trans_complete();
      return false;
+    }
+
+    public function get_input_list($start = 0, $limit = 20,$search){
+        $this->db->order_by("registered", "desc");
+        $this->db->select('*, provider.id AS pid, productinput.id AS id', FALSE);
+        $this->db->join('provider', 'provider.id = productinput.provider');
+
+        if($search["term"]){
+            $this->db->like("provider.name",$search["term"]);
+        }
+
+        if($search["product"]){
+            $this->db->where("product",$search["product"]);
+        }
+
+        $query = $this->db->get('productinput', $limit, $start);
+        if ($query->num_rows() > 0){
+            return $query->result();
+        }
+    }
+
+    public function get_inpu_total($search){
+        if(!$search["term"] && !$search["product"]){
+            return $this->db->count_all('product');
+        }
+
+        $this->db->order_by("registered", "desc");
+        $this->db->select('*, provider.id AS pid, productinput.id AS id', FALSE);
+        $this->db->join('provider', 'provider.id = productinput.provider');
+
+        if($search["term"]){
+            $this->db->like("provider.name",$search["term"]);
+        }
+
+        if($search["product"]){
+            $this->db->where("product",$search["product"]);
+        }
+
+        return $this->db->count_all_results('productinput');
+
     }
 
 }

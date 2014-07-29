@@ -22,13 +22,13 @@
                             </a>
                         </li>
                         <li role="presentation">
-                            <a data-toggle="modal" data-target="#dynamicModal" href="<?php echo site_url("products/reversein/$product->id");?>">
-                                <span class="glyphicon glyphicon-chevron-right"></span> Estornar saída
+                            <a href="<?php echo site_url("refund/input/$product->id");?>">
+                                <span class="glyphicon glyphicon-chevron-right"></span> Estornar entrada
                             </a>
                         </li>
                         <li role="presentation">
-                            <a data-toggle="modal" data-target="#dynamicModal" href="<?php echo site_url("products/reverseout/$product->id");?>">
-                                <span class="glyphicon glyphicon-chevron-left"></span> Estornar entrada
+                            <a href="<?php echo site_url("refund/output/$product->id");?>">
+                                <span class="glyphicon glyphicon-chevron-left"></span> Estornar saída
                             </a>
                         </li>
                     </ul>
