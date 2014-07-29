@@ -17,7 +17,7 @@ Requisitos
 ### Servidor
 - Apache 2.2
 - PHP 5.3
-- MySQL 6
+- MySQL 5.5
 
 ### Cliente
 - Internet Explorer 10
