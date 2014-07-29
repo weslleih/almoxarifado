@@ -31,7 +31,7 @@ class Product_model extends MY_model {
 
         if($search["term"]){
             if(is_numeric($search["term"])){
-                $this->db->where("(`product`.`name` LIKE  '%$search[term]%' OR CAST( `id` AS CHAR( 50 ) ) LIKE  '$search[term]%')");
+                $this->db->where("(`product`.`name` LIKE  '%$search[term]%' OR CAST( `product`.`id` AS CHAR( 50 ) ) LIKE  '$search[term]%')");
             }else{
                 $this->db->like("product.name",$search["term"]);
             }
@@ -57,7 +57,7 @@ class Product_model extends MY_model {
 
         if($search["term"]){
             if(is_numeric($search["term"])){
-                $this->db->where("(`product`.`name` LIKE  '%$search[term]%' OR CAST( `id` AS CHAR( 50 ) ) LIKE  '$search[term]%')");
+                $this->db->where("(`product`.`name` LIKE  '%$search[term]%' OR CAST( `product`.`id` AS CHAR( 50 ) ) LIKE  '$search[term]%')");
             }else{
                 $this->db->like("product.name",$search["term"]);
             }
