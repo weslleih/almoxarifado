@@ -46,7 +46,7 @@
 
         $data["action"] = site_url("consumers/ajaxedit/$id");
 
-        $data["idconsumer"] = $consumer->idconsumer;
+        $data["idconsumer"] = $consumer->id;
         $data["name"] = $consumer->name;
 
         $this->load->view("modals/consumer-form",$data);
@@ -101,7 +101,7 @@
         $this->load->helper(array("form", "url"));
 		$this->load->library("form_validation");
 
-        $this->form_validation->set_rules("idconsumer", "Código","trim|required|is_unic_edit[consumer.idconsumer,idconsumer.$id]|xss_clean");
+        $this->form_validation->set_rules("idconsumer", "Código","trim|is_unic_edit[consumer.idconsumer,idconsumer.$id]|xss_clean");
         $this->form_validation->set_rules("name", "Nome", "trim|required|xss_clean");
 
         $this->form_validation->set_message("is_unique", "%s já está cadastrado no sistema");
@@ -113,8 +113,11 @@
 
             $data->error = $this->form_validation->error_array();;
 		}else{
-            $consumer = array("idconsumer" => $this->input->post("idconsumer"),
-                          "name" => $this->input->post("name"));
+            $consumer = array("name" => $this->input->post("name"));
+
+            if($this->input->post("idconsumer") != ''){
+                $consumer['id'] = $this->input->post("idconsumer");
+            }
 
             if($this->Consumer_model->update($id,$consumer)){
                 $data->success = true;

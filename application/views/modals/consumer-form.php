@@ -4,6 +4,9 @@
     <h4 class="modal-title" id="myModalLabel">Novo Consumidor</h4>
 </div>
 <div class="modal-body">
+    <div class="alert alert-danger alert-dismissible hidden" role="alert">
+        <ul class="errors-list"></ul>
+    </div>
     <form class="form-horizontal" role="form" method="post" action="<?php echo $action;?>">
         <div class="form-group">
             <label for="inputNomeProduto" class="col-sm-2 control-label">Consumidor</label>

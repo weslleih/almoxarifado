@@ -3,7 +3,7 @@
     <?php foreach($users as $user){ ?>
         <tr <?php if($user->active == 0){echo 'class="danger"';}?>>
             <td>
-                <a data-toggle="modal" data-target="#dynamicModal" href="<?php echo site_url("users/edit/$user->iduser");?>"><span class="glyphicon glyphicon-pencil"></span></a>
+                <a data-toggle="modal" data-target="#dynamicModal" href="<?php echo site_url("users/edit/$user->id");?>"><span class="glyphicon glyphicon-pencil"></span></a>
             </td>
             <td>
                 <?php echo $user->name; ?>

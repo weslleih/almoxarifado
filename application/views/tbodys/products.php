@@ -7,27 +7,27 @@
                     <a data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-tasks"></span></a>
                     <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
                         <li role="presentation">
-                            <a data-toggle="modal" data-target="#dynamicModal" href="<?php echo site_url("products/input/$product->idproduct");?>">
+                            <a data-toggle="modal" data-target="#dynamicModal" href="<?php echo site_url("products/input/$product->id");?>">
                                 <span class="glyphicon glyphicon-plus"></span> Entrada
                             </a>
                         </li>
                         <li role="presentation">
-                            <a data-toggle="modal" data-target="#dynamicModal" href="<?php echo site_url("products/output/$product->idproduct");?>">
+                            <a data-toggle="modal" data-target="#dynamicModal" href="<?php echo site_url("products/output/$product->id");?>">
                                 <span class="glyphicon glyphicon-minus"></span> Saída
                             </a>
                         </li>
                         <li role="presentation">
-                            <a data-toggle="modal" data-target="#dynamicModal" href="<?php echo site_url("products/edit/$product->idproduct");?>">
+                            <a data-toggle="modal" data-target="#dynamicModal" href="<?php echo site_url("products/edit/$product->id");?>">
                                 <span class="glyphicon glyphicon-pencil"></span> Editar
                             </a>
                         </li>
                         <li role="presentation">
-                            <a data-toggle="modal" data-target="#dynamicModal" href="<?php echo site_url("products/reversein/$product->idproduct");?>">
+                            <a data-toggle="modal" data-target="#dynamicModal" href="<?php echo site_url("products/reversein/$product->id");?>">
                                 <span class="glyphicon glyphicon-chevron-right"></span> Estornar saída
                             </a>
                         </li>
                         <li role="presentation">
-                            <a data-toggle="modal" data-target="#dynamicModal" href="<?php echo site_url("products/reverseout/$product->idproduct");?>">
+                            <a data-toggle="modal" data-target="#dynamicModal" href="<?php echo site_url("products/reverseout/$product->id");?>">
                                 <span class="glyphicon glyphicon-chevron-left"></span> Estornar entrada
                             </a>
                         </li>
@@ -35,7 +35,7 @@
                 </div>
             </td>
             <td>
-                <?php echo $product->idproduct; ?>
+                <?php echo $product->id; ?>
             </td>
             <td>
                 <?php echo $product->name; ?>

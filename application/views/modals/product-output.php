@@ -11,7 +11,7 @@
         <div class="form-group">
             <label for="inputNomeProduto" class="col-sm-2 control-label">Produto</label>
             <div class="col-sm-3">
-                <input type="text" class="form-control" id="inputNomeProduto" placeholder="Código" disabled <?php insert_input_value($this,"idproduct");?>>
+                <input type="text" class="form-control" id="inputNomeProduto" placeholder="Código" disabled <?php insert_input_value($this,"id");?>>
             </div>
             <div class="col-sm-7">
                 <input type="text" class="form-control" id="inputNomeProduto" placeholder="Nome do produto" disabled <?php insert_input_value($this,"name");?>>
@@ -23,7 +23,7 @@
                 <select name="consumer" class="form-control select2 select2-together">
                 <?php if(isset($consumers)){?>
                     <?php foreach($consumers as $consumer){ ?>
-                        <option value='<?php echo $consumer->idconsumer ?>'><?php echo $consumer->idconsumer ?></option>;
+                        <option value='<?php echo $consumer->id ?>'><?php echo $consumer->idconsumer ?></option>;
                     <?php } ?>
                 <?php } ?>
                 </select>
@@ -32,7 +32,7 @@
                 <select class="form-control select2 select2-together">
                 <?php if(isset($consumers)){ ?>
                     <?php foreach($consumers as $consumer){ ?>
-                        <option value='<?php echo $consumer->idconsumer ?>'><?php echo $consumer->name?></option>;
+                        <option value='<?php echo $consumer->id ?>'><?php echo $consumer->name?></option>;
                     <?php } ?>
                 <?php } ?>
                 </select>

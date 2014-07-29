@@ -17,7 +17,7 @@
                 <?php
                 if(isset($groups)){
                     foreach($groups as $group){
-                        echo "<option value='$group->idgroup'>$group->idgroup - $group->name</option>";
+                        echo "<option value='$group->id'>$group->id - $group->name</option>";
                     }
                 }
                 ?>

@@ -49,7 +49,7 @@
 
 
 
-        $data["idgroup"] = $group->idgroup;
+        $data["id"] = $group->id;
         $data["name"] = $group->name;
 
         $this->load->view("modals/group-form",$data);
@@ -74,7 +74,7 @@
             $group = array("name" => $this->input->post("name"));
 
             if($this->input->post("idgroup") != ''){
-                $group['idgroup'] = $this->input->post("idgroup");
+                $group['id'] = $this->input->post("idgroup");
             }
 
             if($this->Group_model->add($group)){
@@ -104,7 +104,7 @@
         $this->load->helper(array("form", "url"));
 		$this->load->library("form_validation");
 
-        $this->form_validation->set_rules("idgroup", "Código","trim|required|is_unic_edit[group.idgroup,idgroup.$id]|xss_clean");
+        $this->form_validation->set_rules("idgroup", "Código","trim|is_unic_edit[group.id,id.$id]|xss_clean");
         $this->form_validation->set_rules("name", "Razão Social", "trim|required|xss_clean");
 
         $this->form_validation->set_message("is_unique", "%s já está cadastrado no sistema");
@@ -116,8 +116,11 @@
 
             $data->error = $this->form_validation->error_array();;
 		}else{
-            $group = array("idgroup" => $this->input->post("idgroup"),
-                          "name" => $this->input->post("name"));
+            $group = array("name" => $this->input->post("name"));
+
+            if($this->input->post("idgroup") != ''){
+                $group['id'] = $this->input->post("idgroup");
+            }
 
             if($this->Group_model->update($id,$group)){
                 $data->success = true;

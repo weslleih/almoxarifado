@@ -50,7 +50,7 @@ class Providers extends MY_Controller {
 
 
 
-        $data["idprovider"] = $provider->idprovider;
+        $data["idprovider"] = $provider->id;
         $data["name"] = $provider->name;
         $data["document"] = $provider->document;
         $data["email"] = $provider->email;
@@ -96,7 +96,7 @@ class Providers extends MY_Controller {
                          "address" => $this->input->post("address"));
 
             if($this->input->post("idprovider") != ''){
-                $provider['idprovider'] = $this->input->post("idprovider");
+                $provider['id'] = $this->input->post("idprovider");
             }
 
             if($this->Provider_model->add($provider)){
@@ -126,7 +126,7 @@ class Providers extends MY_Controller {
         $this->load->helper(array("form", "url"));
 		$this->load->library("form_validation");
 
-        $this->form_validation->set_rules("idprovider", "Código","trim|required|is_unic_edit[provider.idprovider,idprovider.$id]|xss_clean");
+        $this->form_validation->set_rules("idprovider", "Código","trim|is_unic_edit[provider.idprovider,idprovider.$id]|xss_clean");
         $this->form_validation->set_rules("name", "Razão Social", "trim|required|xss_clean");
         $this->form_validation->set_rules("document", "CPF/CNPJ", "trim|required|is_unic_edit[provider.document,idprovider.$id]|xss_clean");
         $this->form_validation->set_rules("email", "Email", "trim|xss_clean");
@@ -145,8 +145,7 @@ class Providers extends MY_Controller {
 
             $data->error = $this->form_validation->error_array();;
 		}else{
-            $provider = array("idprovider" => $this->input->post("idprovider"),
-                          "name" => $this->input->post("name"),
+            $provider = array("name" => $this->input->post("name"),
                          "document" => $this->input->post("document"),
                          "email" => $this->input->post("email"),
                          "phone1" => $this->input->post("phone1"),
@@ -154,6 +153,10 @@ class Providers extends MY_Controller {
                          "phone2" => $this->input->post("phone2"),
                          "phone2resp" => $this->input->post("phone2resp"),
                          "address" => $this->input->post("address"));
+
+            if($this->input->post("idprovider") != ''){
+                $provider['id'] = $this->input->post("idprovider");
+            }
 
             if($this->Provider_model->update($id,$provider)){
                 $data->success = true;

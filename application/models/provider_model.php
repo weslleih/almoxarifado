@@ -10,12 +10,12 @@ class Provider_model extends MY_model {
     }
 
     public function update($id,$data){
-        $this->db->where('idprovider', $id);
+        $this->db->where('id', $id);
         $this->db->update('provider', $data);
         if($this->db->affected_rows() > 0){
             return true;
         }else{
-            $data['idprovider'] = $id;
+            $data['id'] = $id;
             $query = $this->db->get_where('provider', $data);
             if ($query->num_rows() > 0){
                 return true;
@@ -30,7 +30,7 @@ class Provider_model extends MY_model {
         if($term){
             $this->db->like("name",$term);
             if(is_numeric($term)){
-                $this->db->or_like("CAST(`idprovider` as CHAR(50))",$term,'after');
+                $this->db->or_like("CAST(`id` as CHAR(50))",$term,'after');
                 $this->db->or_like("document",$term,'after');
             }else{
                 $this->db->or_like("document",$term);
@@ -57,7 +57,7 @@ class Provider_model extends MY_model {
         if($term){
             $this->db->like("name",$term);
             if(is_numeric($term)){
-                $this->db->or_like("CAST(`idprovider` as CHAR(50))",$term,'after');
+                $this->db->or_like("CAST(`id` as CHAR(50))",$term,'after');
                 $this->db->or_like("document",$term,'after');
             }else{
                 $this->db->or_like("document",$term);
@@ -69,7 +69,7 @@ class Provider_model extends MY_model {
     }
 
     public function get_by_id($id){
-        $query = $this->db->get_where('provider', array('idprovider' => $id), 1);
+        $query = $this->db->get_where('provider', array('id' => $id), 1);
         if ($query->num_rows() > 0){
             return $query->row();
         }

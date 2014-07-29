@@ -17,7 +17,7 @@ class Products extends MY_Controller {
         $data["action"] = site_url("products");
 
         $search = array("term" => $term = $this->input->post('term'),
-                        "idgroup" =>$term = $this->input->post('idgroup'));
+                        "group" =>$term = $this->input->post('group'));
 
         $data["products"] = $this->Product_model->get_list($page,20,$search);
 
@@ -46,7 +46,7 @@ class Products extends MY_Controller {
         $product = $this->Product_model->get_by_id($id);
         if(!$product){
             $data["title"] = "Erro!";
-            $data["message"] = "Fornecedor não encontrado!";
+            $data["message"] = "Produto não encontrado!";
             $this->load->view("modals/error",$data);
             return;
         }
@@ -55,9 +55,9 @@ class Products extends MY_Controller {
 
         $data["groups"] = $this->Group_model->get_all();
 
-        $data["idproduct"] = $product->idproduct;
+        $data["id"] = $product->id;
         $data["name"] = $product->name;
-        $data["idgroup"] = $product->idgroup;
+        $data["group"] = $product->group;
         $data["unit"] = $product->unit;
         $data["maxinvent"] = $product->maxinvent;
         $data["mininvent"] = $product->mininvent;
@@ -79,7 +79,7 @@ class Products extends MY_Controller {
 
         $data["action"] = site_url("products/ajaxinput/$id");
 
-        $data["idproduct"] = $product->idproduct;
+        $data["id"] = $product->id;
         $data["name"] = $product->name;
         $data["unit"] = $product->unit;
 
@@ -100,7 +100,7 @@ class Products extends MY_Controller {
 
         $data["action"] = site_url("products/ajaxoutput/$id");
 
-        $data["idproduct"] = $product->idproduct;
+        $data["id"] = $product->id;
         $data["name"] = $product->name;
         $data["unit"] = $product->unit;
         $data["value"] = $product->value;
@@ -141,7 +141,7 @@ class Products extends MY_Controller {
             $data->error = $this->form_validation->error_array();;
 		}else{
             $product = array("name" => $this->input->post("name"),
-                         "idgroup" => $this->input->post("idgroup"),
+                         "group" => $this->input->post("idgroup"),
                          "unit" => $this->input->post("unit"),
                          "maxinvent" => $this->input->post("maxinvent"),
                          "mininvent" => $this->input->post("mininvent"),
@@ -149,7 +149,7 @@ class Products extends MY_Controller {
                          "observation" => $this->input->post("observation"));
 
             if($this->input->post("idproduct") != ''){
-                $product['idproduct'] = $this->input->post("idproduct");
+                $product['id'] = $this->input->post("idproduct");
             }
 
             if($this->Product_model->add($product)){
@@ -179,8 +179,7 @@ class Products extends MY_Controller {
         $this->load->helper(array("form", "url"));
 		$this->load->library("form_validation");
 
-        $this->form_validation->set_rules("idproduct", "Código","trim|required|is_unic_edit[product.idproduct,idproduct.$id]|xss_clean");
-        $this->form_validation->set_rules("idproduct", "Código", "trim|is_unic[product.idproduct]|xss_clean");
+        $this->form_validation->set_rules("idproduct", "Código","trim|is_unic_edit[product.id,id.$id]|xss_clean");
         $this->form_validation->set_rules("name", "Nome", "trim|required|xss_clean");
         $this->form_validation->set_rules("idgroup", "Grupo", "trim|required|xss_clean");
         $this->form_validation->set_rules("unit", "Unidade", "trim|required|xss_clean");
@@ -198,14 +197,17 @@ class Products extends MY_Controller {
 
             $data->error = $this->form_validation->error_array();;
 		}else{
-            $product = array("idproduct" => $this->input->post("idproduct"),
-                          "name" => $this->input->post("name"),
-                         "idgroup" => $this->input->post("idgroup"),
+            $product = array("name" => $this->input->post("name"),
+                         "group" => $this->input->post("idgroup"),
                          "unit" => $this->input->post("unit"),
                          "maxinvent" => $this->input->post("maxinvent"),
                          "mininvent" => $this->input->post("mininvent"),
                          "catmat" => $this->input->post("catmat"),
                          "observation" => $this->input->post("observation"));
+
+            if($this->input->post("idproduct") != ''){
+                $product['id'] = $this->input->post("idproduct");
+            }
 
             if($this->Product_model->update($id,$product)){
                 $data->success = true;
@@ -244,7 +246,7 @@ class Products extends MY_Controller {
         $this->form_validation->set_rules("fiscnotedate", "Data da nota fiscal", "trim|xss_clean");
         $this->form_validation->set_rules("obs", "Observações", "trim|xss_clean");
 
-        $this->form_validation->set_message("callback_valid_brl", "%s não é um valor de moéda válido");
+        $this->form_validation->set_message("valid_brl", "%s não é um valor de moéda válido");
 
         $data = new stdClass();
 
@@ -253,7 +255,7 @@ class Products extends MY_Controller {
 
             $data->error = $this->form_validation->error_array();;
 		}else{
-            $product = array("idproduct" => $id,
+            $product = array("product" => $id,
                              "provider" => $this->input->post("provider"),
                              "date" => convert_date($this->input->post("date")),
                              "quantity" => $this->input->post("quantity"),
@@ -261,9 +263,9 @@ class Products extends MY_Controller {
                              "empenho" => $this->input->post("empenho"),
                              "empenhodate" => convert_date($this->input->post("empenhodate")),
                              "fiscnote" => $this->input->post("fiscnote"),
-                             "fiscnotedate" => $this->convert_date($this->input->post("fiscnotedate")),
+                             "fiscnotedate" => convert_date($this->input->post("fiscnotedate")),
                              "obs" => $this->input->post("obs"),
-                             "iduser" => 1);
+                             "user" => 1);
 
             if($this->Product_model->add_input($product)){
                 $data->success = true;
@@ -307,13 +309,13 @@ class Products extends MY_Controller {
 
             $data->error = $this->form_validation->error_array();;
 		}else{
-            $product = array("idproduct" => $id,
+            $product = array("product" => $id,
                              "consumer" => $this->input->post("consumer"),
                              "responsible" => $this->input->post("responsible"),
                              "quantity" => $this->input->post("quantity"),
                              "date" => convert_date($this->input->post("date")),
                              "document" => $this->input->post("document"),
-                             "iduser" => 1);
+                             "user" => 1);
             $resul = $this->Product_model->add_output($product);
             if($resul === true){
                 $data->success = true;

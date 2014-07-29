@@ -3,10 +3,10 @@
     <?php foreach($groups as $group){ ?>
         <tr>
             <td>
-                <a data-toggle="modal" data-target="#dynamicModal" href="<?php echo site_url("groups/edit/$group->idgroup");?>"><span class="glyphicon glyphicon-pencil"></span></a>
+                <a data-toggle="modal" data-target="#dynamicModal" href="<?php echo site_url("groups/edit/$group->id");?>"><span class="glyphicon glyphicon-pencil"></span></a>
             </td>
             <td>
-                <?php echo $group->idgroup; ?>
+                <?php echo $group->id; ?>
             </td>
             <td>
                 <?php echo $group->name; ?>

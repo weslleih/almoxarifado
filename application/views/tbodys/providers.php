@@ -4,10 +4,10 @@
 
         <tr>
             <td>
-                <a data-toggle="modal" data-target="#dynamicModal" href="<?php echo site_url("providers/edit/$provider->idprovider");?>"><span class="glyphicon glyphicon-pencil"></span></a>
+                <a data-toggle="modal" data-target="#dynamicModal" href="<?php echo site_url("providers/edit/$provider->id");?>"><span class="glyphicon glyphicon-pencil"></span></a>
             </td>
             <td>
-                <?php echo $provider->idprovider; ?>
+                <?php echo $provider->id; ?>
             </td>
             <td>
                 <?php echo $provider->name; ?>

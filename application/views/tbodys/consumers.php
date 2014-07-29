@@ -4,10 +4,10 @@
     <?php foreach($consumers as $consumer){ ?>
         <tr>
             <td>
-                <a data-toggle="modal" data-target="#dynamicModal" href="<?php echo site_url("consumers/edit/$consumer->idconsumer");?>"><span class="glyphicon glyphicon-pencil"></span></a>
+                <a data-toggle="modal" data-target="#dynamicModal" href="<?php echo site_url("consumers/edit/$consumer->id");?>"><span class="glyphicon glyphicon-pencil"></span></a>
             </td>
             <td>
-                <?php echo $consumer->idconsumer; ?>
+                <?php echo $consumer->id; ?>
             </td>
             <td>
                 <?php echo $consumer->name; ?>

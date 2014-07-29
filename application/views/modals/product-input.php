@@ -11,7 +11,7 @@
         <div class="form-group">
             <label for="inputNomeProduto" class="col-sm-2 control-label">Produto</label>
             <div class="col-sm-3">
-                <input name="" type="text" class="form-control" id="inputNomeProduto" placeholder="Código" disabled value="<?php echo $idproduct ?>">
+                <input name="" type="text" class="form-control" id="inputNomeProduto" placeholder="Código" disabled value="<?php echo $id ?>">
             </div>
             <div class="col-sm-7">
                 <input name="" type="text" class="form-control" id="inputNomeProduto" placeholder="Nome do produto" disabled value="<?php echo $name ?>">
@@ -23,7 +23,7 @@
                 <select name="provider" class="form-control select2 select2-together">
                 <?php if(isset($providers)){?>
                     <?php foreach($providers as $provider){ ?>
-                        <option value='<?php echo $provider->idprovider ?>'><?php echo $provider->idprovider ?></option>;
+                        <option value='<?php echo $provider->id ?>'><?php echo $provider->id ?></option>;
                     <?php } ?>
                 <?php } ?>
                 </select>
@@ -32,7 +32,7 @@
                 <select class="form-control select2 select2-together">
                 <?php if(isset($providers)){ ?>
                     <?php foreach($providers as $provider){ ?>
-                        <option value='<?php echo $provider->idprovider ?>'><?php echo $provider->name?></option>;
+                        <option value='<?php echo $provider->id ?>'><?php echo $provider->name?></option>;
                     <?php } ?>
                 <?php } ?>
                 </select>
