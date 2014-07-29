@@ -7,6 +7,8 @@ $(document).ready(function (e) {
         $(".form-table-search").first().submit();
     });
 
+    $(".popover-button").popover();
+
     $(".form-table-search").submit(getTable);
 
     $(".pag-num a").click(getPageTable);
@@ -79,6 +81,7 @@ $(document).ready(function (e) {
     $(document).bind("ajaxComplete", function () {
         $(".slider").css('display', 'none');
         $(".pag-num a").click(getPageTable);
+        $(".popover-button").popover();
     });
 
     $(document).bind("ajaxSend", function () {

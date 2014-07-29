@@ -38,7 +38,9 @@
                 <?php echo $product->id; ?>
             </td>
             <td>
+                <div class="popover-button" data-toggle="popover" data-content="<?php echo $product->observation; ?>" data-trigger="hover" data-placement="bottom">
                 <?php echo $product->name; ?>
+                </div>
             </td>
             <td>
                 <?php echo $product->gname; ?>
