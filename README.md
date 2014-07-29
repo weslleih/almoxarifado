@@ -7,9 +7,9 @@ Recursos
 ------------
 - Multi usuário com níveis hierárquicos 
 - Grupos de produtos
-- Fornecedores com dados de contato
+- Fornecedores
 - Consumidores
-- Relatórios configuráveis
+- Relatórios
 - Log de alterações
 
 Requisitos
@@ -23,3 +23,9 @@ Requisitos
 - Internet Explorer 10
 - Mozilla Firefox 4
 - Google Chrome 22
+
+Créditos
+------------
+- Distribuído sob licença [MIT](https://github.com/weslleih/almoxarifado/blob/master/LICENSE) 
+- [CodeIgniter](http://ellislab.com/codeigniter) Copyright (c) 2008 - 2014, EllisLab, Inc.
+- [Bootstrap](http://getbootstrap.com/) Copyright (c) 2011-2014 Twitter, Inc.
