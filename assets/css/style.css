@@ -3,6 +3,7 @@
 body {
     padding-top: 70px;
 }
+
 /*Tables */
 
 .las-collum {
@@ -16,6 +17,11 @@ body {
 /* Pagination */
 .pagination-tr{
     border: none;
+}
+
+/* Product List */
+#group-filer{
+    width: 350px;
 }
 
 

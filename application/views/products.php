@@ -11,8 +11,8 @@
                 </a>
             </div>
         </div>
-        <div class="form-group">
-            <select name="idgroup" class="form-control select2" data-placeholder="Filtrar por grupo">
+        <div class="form-group" id="group-filer">
+            <select  name="idgroup" class="form-control select2" data-placeholder="Filtrar por grupo">
                 <option value="0">Filtrar por grupo</option>
                 <?php
                 if(isset($groups)){
