@@ -30,7 +30,7 @@
                 <?php //echo $inout->name; ?>
             </td>
             <td>
-                <?php echo "R$".number_format($inout->value, 2, ',', ''); ?>
+                <?php echo "R$".number_format($inout->value*$inout->quantity, 2, ',', ''); ?>
             </td>
         </tr>
     <?php } ?>
