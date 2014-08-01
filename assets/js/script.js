@@ -4,7 +4,7 @@ $(document).on('hidden.bs.modal', function (e) {
 
 $(document).bind("ajaxComplete", function () {
     $(".slider").css('display', 'none');
-    $(".pag-num a").click(getPageTable);
+    $(".pagination a").click(getPageTable);
     $(".popover-button").popover();
 });
 
@@ -23,7 +23,7 @@ $(document).ready(function (e) {
 
     $(".form-table-search").submit(getTable);
 
-    $(".pag-num a").click(getPageTable);
+    $(".pagination a").click(getPageTable);
 
     $(".send-sarch").click(function (e) {
         e.preventDefault();
@@ -34,6 +34,19 @@ $(document).ready(function (e) {
         if (e.keyCode == 13)
             $(".form-table-search").first().submit();
     });
+
+    $('.input-date').datepicker({
+            format: 'dd/mm/yyyy'
+        });
+        $('.input-date').on("keyup", function (e) {
+            var value = $(e.currentTarget).val();
+            var length = value.length
+            if ((length == 3 || length == 6) && !isNaN(value.substring(length - 1, length))) {
+                var str = value.substring(0, length - 1);
+                str += "/" + value.substring(length - 1, length);
+                $(e.currentTarget).val(str);
+            }
+        });
 
     $('#dynamicModal').on('loaded.bs.modal', function (e) {
 
@@ -140,11 +153,15 @@ function getTable(e) {
 function getPageTable(e) {
     e.preventDefault();
     var link = $(e.currentTarget);
-    $("table tbody").first().empty();
+    var form = $("form").first();
+    $("table tbody").first().remove();
+    $("table tfoot").first().remove();
     $.ajax({
         url: link.attr("href"),
+        type: "POST",
+        data: form.serialize()
     }).done(function (resp) {
-        $("table tbody").first().append(resp);
+        $("table").first().append(resp);
     });
 }
 
