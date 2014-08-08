@@ -4,18 +4,16 @@
         $group = $search["group"]?"WHERE `group`.`id` = ".$search["group"]:'';
 
         $sql = "
-                        SELECT `product`.`id` AS `id`,
-                        `group`.`id` AS `gid`,
-                        `product`.`name` AS `name`,
-                        `product`.`value`,
-                        `product`.`quantity`,
-                        `product`.`observation`,
-                        COALESCE(`invalue`,0) AS `invalue`,
-                        COALESCE(`outvalue`,0) AS `outvalue`,
-                        COALESCE(`inquantity`,0) AS `inquantity`,
-                        COALESCE(`outquantity`,0) AS `outquantity`,
-                        (`product`.`value` * `product`.`quantity` + COALESCE(`outvalue`,0) + COALESCE(`OUTPUT`.`xvalue`,0) - COALESCE(`invalue`,0) + COALESCE(`INPUT`.`xvalue`,0)) AS `befvalue`,
-                        (`product`.`quantity` - COALESCE(`inquantity`,0) + COALESCE(`INPUT`.`xquantity`,0) + COALESCE(`outquantity`,0) + COALESCE(`OUTPUT`.`xquantity`,0)) AS `befquantity`
+                        SELECT `group`.`id` AS `id`,
+                        SUM(`group`.`name` AS `name`) AS name,
+                        SUM(`product`.`value`) AS value,
+                        SUM(`product`.`quantity`) AS quantity,
+                        SUM(COALESCE(`invalue`,0)) AS `invalue`,
+                        SUM(COALESCE(`outvalue`,0)) AS `outvalue`,
+                        SUM(COALESCE(`inquantity`,0)) AS `inquantity`,
+                        SUM(COALESCE(`outquantity`,0)) AS `outquantity`,
+                        SUM((`product`.`value` * `product`.`quantity` + COALESCE(`outvalue`,0) + COALESCE(`OUTPUT`.`xvalue`,0) - COALESCE(`invalue`,0) + COALESCE(`INPUT`.`xvalue`,0))) AS `befvalue`,
+                        SUM((`product`.`quantity` - COALESCE(`inquantity`,0) + COALESCE(`INPUT`.`xquantity`,0) + COALESCE(`outquantity`,0) + COALESCE(`OUTPUT`.`xquantity`,0))) AS `befquantity`
                         FROM (`product`)
                         LEFT JOIN
                             (SELECT `productinput`.`product`,
@@ -51,6 +49,7 @@
                             GROUP BY `product`) AS `OUTPUT` ON `OUTPUT`.`product` = `product`.`id`
                         JOIN `group` ON `group`.`id` = `product`.`group`
                         $group
+                        GROUP BY `group`.`id`
                         ORDER BY `product`.`name`";
 
         if($search["group"]){

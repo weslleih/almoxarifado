@@ -165,3 +165,8 @@ ALTER TABLE `productoutput`
   ADD CONSTRAINT `productoutput_ibfk_1` FOREIGN KEY (`product`) REFERENCES `product` (`id`) ON UPDATE CASCADE ON DELETE RESTRICT,
   ADD CONSTRAINT `productoutput_ibfk_2` FOREIGN KEY (`consumer`) REFERENCES `consumer` (`id`) ON UPDATE CASCADE ON DELETE RESTRICT,
   ADD CONSTRAINT `productoutput_ibfk_3` FOREIGN KEY (`user`) REFERENCES `user` (`id`) ON UPDATE CASCADE ON DELETE RESTRICT;
+
+--
+-- Usuário admin
+--
+INSERT INTO `almoxarifado`.`user` (`id`, `name`, `login`, `password`, `level`, `lastlogin`, `active`) VALUES (NULL, 'admin', 'admin', SHA1('admin'), '3', NULL, '1');
