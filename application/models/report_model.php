@@ -5,7 +5,7 @@
 
         $sql = "
                         SELECT `group`.`id` AS `id`,
-                        SUM(`group`.`name` AS `name`) AS name,
+                        `group`.`name` AS name,
                         SUM(`product`.`value`) AS value,
                         SUM(`product`.`quantity`) AS quantity,
                         SUM(COALESCE(`invalue`,0)) AS `invalue`,

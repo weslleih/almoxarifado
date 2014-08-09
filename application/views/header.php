@@ -71,7 +71,7 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Relatórios<span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
                             <li>
-                                <a href="<?php echo site_url("report/inout");?>">Movimentação</a>
+                                <a href="<?php echo site_url("report/inout");?>">Movimentação por grupo</a>
                             </li>
                         </ul>
                     </li>

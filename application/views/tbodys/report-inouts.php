@@ -3,10 +3,10 @@
     <?php foreach($inouts as $inout){ ?>
         <tr>
             <td>
-                <?php echo $inout->gid; ?>
+                <?php echo $inout->id; ?>
             </td>
             <td>
-                <?php echo "$inout->name: $inout->observation"; ?>
+                <?php echo $inout->name; ?>
             </td>
             <td>
                 <?php echo "R$".number_format($inout->befvalue, 2, ',', ''); ?>
