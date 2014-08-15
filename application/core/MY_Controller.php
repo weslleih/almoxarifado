@@ -2,8 +2,9 @@
 class MY_Controller extends CI_Controller {
     function __construct() {
         parent::__construct();
-        if(!file_exists(APPPATH."/config/database.php") && !file_exists(APPPATH."/config/development/database.php")){
-            redirect('/installation', 'refresh');
+        $this->load->library('session');
+        if(!$this->session->userdata('level')){
+            redirect('/session/login', 'refresh');
         }
     }
     protected function render($view,$data){
