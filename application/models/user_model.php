@@ -43,5 +43,24 @@ class User_model extends MY_model {
             return $query->row();
         }
     }
+
+    public function get_by_login($login){
+        $query = $this->db->get_where('user', array('login' => $login), 1);
+        if ($query->num_rows() > 0){
+            return $query->row();
+        }
+    }
+    public function login($login,$password){
+        $query = $this->db->get_where('user', array('login' => $login, 'password' => $password));
+        if ($query->num_rows() > 0){
+            if($query->row()->active){
+                return 2;
+            }else{
+                return 1;
+            }
+        }
+        print_r($this->db->last_query());
+        return 0;
+    }
 }
 ?>

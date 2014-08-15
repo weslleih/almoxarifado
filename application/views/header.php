@@ -8,7 +8,7 @@
     <title>Almoxarifado</title>
 
     <!-- Bootstrap -->
-    <link href="<?php echo asset_url("css/bootstrap.min.css")?>"rel="stylesheet">
+    <link href="<?php echo asset_url("css/bootstrap.min.css")?>" rel="stylesheet">
 
     <link href="<?php echo asset_url("css/style.css")?>"rel="stylesheet">
 
@@ -86,7 +86,7 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="<?php echo site_url("session/login");?>" data-toggle="modal" data-target="#dynamicModal">Login</a>
+                        <a href="<?php echo site_url("session/logout");?>">Sair</a>
                     </li>
                     <li>
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sobre<span class="caret"></span></a>
