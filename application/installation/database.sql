@@ -169,4 +169,4 @@ ALTER TABLE `productoutput`
 --
 -- Usuário admin
 --
-INSERT INTO `almoxarifado`.`user` (`id`, `name`, `login`, `password`, `level`, `lastlogin`, `active`) VALUES (NULL, 'admin', 'admin', SHA1('admin'), '3', NULL, '1');
+INSERT INTO `almoxarifado`.`user` (`id`, `name`, `login`, `password`, `level`, `lastlogin`, `active`) VALUES (NULL, 'admin', 'admin', SHA1('123456'), '3', NULL, '1');
