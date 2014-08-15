@@ -59,7 +59,6 @@ class User_model extends MY_model {
                 return 1;
             }
         }
-        print_r($this->db->last_query());
         return 0;
     }
 }
