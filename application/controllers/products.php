@@ -10,7 +10,7 @@ class Products extends MY_Controller {
     }
 
     public function index()	{
-
+        $this->verify_level(array(1,2,3));
         $this->load->library("pagination");
         $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
 
@@ -37,12 +37,14 @@ class Products extends MY_Controller {
     }
 
     public function add()	{
+        $this->verify_level(2);
         $data["action"] = site_url("products/ajaxadd");
         $data["groups"] = $this->Group_model->get_all();
         $this->load->view("modals/product-form",$data);
     }
 
     public function edit($id)	{
+        $this->verify_level(2);
         $product = $this->Product_model->get_by_id($id);
         if(!$product){
             $data["title"] = "Erro!";
@@ -68,6 +70,7 @@ class Products extends MY_Controller {
     }
 
     function input($id){
+        $this->verify_level(2);
         $this->load->model("Provider_model");
         $product = $this->Product_model->get_by_id($id);
         if(!$product){
@@ -89,6 +92,7 @@ class Products extends MY_Controller {
     }
 
     function output($id){
+        $this->verify_level(2);
         $this->load->model("Consumer_model");
         $product = $this->Product_model->get_by_id($id);
         if(!$product){
@@ -111,14 +115,17 @@ class Products extends MY_Controller {
     }
 
     function reversein($id_product){
+        $this->verify_level(2);
         $this->load->view("modals/product-output");
     }
 
     function reverseout($id_product){
+        $this->verify_level(2);
         $this->load->view("modals/product-input");
     }
 
     public function ajaxadd()	{
+        $this->verify_level(2);
         $this->load->helper(array("form", "url"));
 		$this->load->library("form_validation");
 
@@ -165,7 +172,7 @@ class Products extends MY_Controller {
     }
 
     public function ajaxedit($id)	{
-
+        $this->verify_level(2);
         $product = $this->Product_model->get_by_id($id);
         if(!$product){
             $data->success = false;
@@ -222,7 +229,7 @@ class Products extends MY_Controller {
     }
 
     public function ajaxinput($id)	{
-
+        $this->verify_level(2);
         $product = $this->Product_model->get_by_id($id);
         if(!$product){
             $data->success = false;
@@ -280,7 +287,7 @@ class Products extends MY_Controller {
     }
 
     public function ajaxoutput($id)	{
-
+        $this->verify_level(2);
         $product = $this->Product_model->get_by_id($id);
         if(!$product){
             $data->success = false;

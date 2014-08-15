@@ -5,6 +5,7 @@
         parent::__construct();
         $this->load->helper("url");
         $this->load->model("Consumer_model");
+        $this->verify_level(2);
     }
 
     public function index()	{

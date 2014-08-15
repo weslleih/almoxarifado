@@ -17,5 +17,20 @@ class MY_Controller extends CI_Controller {
         ->set_content_type('application/json')
         ->set_output(json_encode($data));
     }
+
+    protected function verify_level($level){
+        if(is_array($level)){
+            foreach($level as $lv){
+                if($lv == $this->session->userdata('level')){
+                    return;
+                }
+            }
+        }else{
+            if($level == $this->session->userdata('level')){
+                return;
+            }
+        }
+        redirect('/', 'refresh');
+    }
 }
 ?>

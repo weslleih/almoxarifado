@@ -2,6 +2,7 @@
 <tbody>
     <?php foreach($products as $product){?>
         <tr>
+             <?php if($this->session->userdata('level') == 2) { ?>
             <td>
                 <div class="dropdown">
                     <a data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-tasks"></span></a>
@@ -34,6 +35,7 @@
                     </ul>
                 </div>
             </td>
+            <?php } ?>
             <td>
                 <?php echo $product->id; ?>
             </td>

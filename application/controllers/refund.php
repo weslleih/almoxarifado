@@ -6,6 +6,7 @@ class Refund extends MY_Controller {
         parent::__construct();
         $this->load->helper("url");
         $this->load->model("Product_model");
+        $this->verify_level(2);
     }
 
     public function index()	{

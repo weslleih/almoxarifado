@@ -1,8 +1,10 @@
 <div class="table-header">
     <form role="form" class="form-inline form-table-search" method="post" action="<?php echo $action;?>">
+        <?php if($this->session->userdata('level') == 2) { ?>
         <a type="button" class="btn btn-success" data-toggle="modal" data-target="#dynamicModal" href="<?php echo site_url("products/add");?>">
             <span class="glyphicon glyphicon-plus"></span> Produto
         </a>
+        <?php } ?>
         <div class="form-group">
             <div class="input-group">
                 <input name="term" type="search" class="form-control" id="inputProduto" placeholder="Nome ou código">
@@ -28,7 +30,9 @@
 <table class="table table-hover">
     <thead>
         <tr>
+            <?php if($this->session->userdata('level') == 2) { ?>
             <th class="las-collum"></th>
+            <?php } ?>
             <th class="las-collum">
                 Código
             </th>

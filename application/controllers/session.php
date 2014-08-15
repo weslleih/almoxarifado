@@ -32,13 +32,12 @@ class Session extends CI_Controller {
         $this->load->view('login',null);
     }
     public function logout()	{
-        //$this->load->view('modals/provider-edit',null);
+        $this->session->sess_destroy();
+        redirect('/', 'refresh');
     }
 
     public function login_check($login,$password){
-
         $loged = $this->User_model->login($login, sha1($password));
-        print_r($password);
 		if ($loged == 2){
             return TRUE;
         }elseif($loged == 1){

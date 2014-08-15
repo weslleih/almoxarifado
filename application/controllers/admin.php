@@ -1,6 +1,10 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-    class Admin extends MY_Controller {
+class Admin extends MY_Controller {
+    function __construct() {
+        parent::__construct();
+        $this->verify_level(3);
+    }
     public function index()	{
         $this->render('consumers',null);
     }

@@ -7,6 +7,7 @@ class Report extends MY_Controller {
         $this->load->helper("url");
         $this->load->model("Report_model");
         $this->load->model("Group_model");
+        $this->verify_level(2);
     }
 
     public function index()	{

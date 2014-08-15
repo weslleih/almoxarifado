@@ -53,6 +53,7 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
+                    <?php if($this->session->userdata('level') == 2) { ?>
                     <li>
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Estoque<span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
@@ -75,6 +76,8 @@
                             </li>
                         </ul>
                     </li>
+                    <?php } ?>
+                    <?php if($this->session->userdata('level') == 3) { ?>
                     <li>
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Administração<span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
@@ -83,6 +86,7 @@
                             </li>
                         </ul>
                     </li>
+                    <?php } ?>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li>

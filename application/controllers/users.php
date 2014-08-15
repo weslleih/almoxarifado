@@ -6,6 +6,7 @@
         parent::__construct();
         $this->load->helper("url");
         $this->load->model("User_model");
+        $this->verify_level(3);
     }
     public function index()	{
         $this->load->library("pagination");
