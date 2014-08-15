@@ -1,4 +1,5 @@
 <?php if (isset($users) && is_array($users)){ ?>
+<?php $niveis = array(1 => "Consumidor", 2 => "Operador", 3 => "Administrador"); ?>
 <tbody>
     <?php foreach($users as $user){ ?>
         <tr <?php if($user->active == 0){echo 'class="danger"';}?>>
@@ -18,7 +19,7 @@
                     echo date('d/m/Y H:i:s',strtotime($user->lastlogin));
                 }?>
             </td>
-            <td><?php echo $user->level;?></td>
+            <td><?php echo $niveis[$user->level];?></td>
         </tr>
     <?php } ?>
 </tbody>
