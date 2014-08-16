@@ -17,7 +17,7 @@ class Products extends MY_Controller {
         $data["action"] = site_url("products");
 
         $search = array("term" => $term = $this->input->post('term'),
-                        "group" =>$term = $this->input->post('group'));
+                        "group" => $term = $this->input->post('group'));
 
         $data["products"] = $this->Product_model->get_list($page,20,$search);
 
@@ -112,16 +112,6 @@ class Products extends MY_Controller {
         $data['consumers'] = $this->Consumer_model->get_all();
 
         $this->load->view("modals/product-output",$data);
-    }
-
-    function reversein($id_product){
-        $this->verify_level(2);
-        $this->load->view("modals/product-output");
-    }
-
-    function reverseout($id_product){
-        $this->verify_level(2);
-        $this->load->view("modals/product-input");
     }
 
     public function ajaxadd()	{
