@@ -81,7 +81,7 @@
                 $row->output = $output_row->value+$immediate_row->value;
                 $row->outfisic = $output_row->value;
                 $row->outimmediate = $immediate_row->value;
-                $row->now = $row->before + $input_row->value - $output_row->value;
+                $row->after = $row->before + $input_row->value - $output_row->value;
                 $resul[] = $row;
             }
         }

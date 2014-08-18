@@ -30,7 +30,7 @@
                 <?php echo "R$".number_format($inout->outimmediate, 2, ',', ''); ?>
             </td>
             <td>
-                <?php echo "R$".number_format($inout->now, 2, ',', ''); ?>
+                <?php echo "R$".number_format($inout->after, 2, ',', ''); ?>
             </td>
         </tr>
     <?php } ?>
