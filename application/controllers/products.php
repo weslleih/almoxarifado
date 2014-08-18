@@ -114,6 +114,30 @@ class Products extends MY_Controller {
         $this->load->view("modals/product-output",$data);
     }
 
+    function immediate($id){
+        $this->verify_level(2);
+        $this->load->model("Consumer_model");
+        $this->load->model("Provider_model");
+        $product = $this->Product_model->get_by_id($id);
+        if(!$product){
+            $data["title"] = "Erro!";
+            $data["message"] = "Produto não encontrado!";
+            $this->load->view("modals/error",$data);
+            return;
+        }
+
+        $data["action"] = site_url("products/ajaximmediate/$id");
+
+        $data["id"] = $product->id;
+        $data["name"] = $product->name;
+        $data["unit"] = $product->unit;
+
+        $data['consumers'] = $this->Consumer_model->get_all();
+        $data['providers'] = $this->Provider_model->get_all();
+
+        $this->load->view("modals/product-immediate",$data);
+    }
+
     public function ajaxadd()	{
         $this->verify_level(2);
         $this->load->helper(array("form", "url"));
@@ -324,6 +348,66 @@ class Products extends MY_Controller {
                 }else{
                     $error->message = "Erro interno, problemas com o banco de dados.";
                 }
+                $data->error = $error;
+            }
+		}
+        $this->jsonoutput($data);
+    }
+
+    public function ajaximmediate($id)	{
+        $this->verify_level(2);
+        $product = $this->Product_model->get_by_id($id);
+        if(!$product){
+            $data->success = false;
+            $error = new stdClass();
+            $error->message = "Erro interno, problemas com o banco de dados.";
+            $data->error = $error;
+            $this->jsonoutput($data);
+            return;
+        }
+
+        $this->load->helper(array("form", "url"));
+		$this->load->library("form_validation");
+
+        $this->form_validation->set_rules("provider", "Fornecedor","trim|xss_clean");
+        $this->form_validation->set_rules("date", "Data", "trim|required|xss_clean");
+        $this->form_validation->set_rules("consumer", "Consumidor","trim|required|xss_clean");
+        $this->form_validation->set_rules("responsible", "Recebente", "trim|required|xss_clean");
+        $this->form_validation->set_rules("document", "Nota fiscal ", "trim|xss_clean");
+        $this->form_validation->set_rules("quantity", "Quantidade", "trim|required|xss_clean");
+        $this->form_validation->set_rules("value", "Valor unitário", "trim|required|max_length[10]|callback_valid_brl|xss_clean");
+        $this->form_validation->set_rules("fiscnote", "Nota fiscal ", "trim|xss_clean");
+        $this->form_validation->set_rules("fiscnotedate", "Data da nota fiscal", "trim|xss_clean");
+        $this->form_validation->set_rules("obs", "Observações", "trim|xss_clean");
+
+        $this->form_validation->set_message("valid_brl", "%s não é um valor de moéda válido");
+
+        $data = new stdClass();
+
+		if ($this->form_validation->run() == FALSE){
+            $data->success = false;
+
+            $data->error = $this->form_validation->error_array();;
+		}else{
+            $immediate = array("product" => $id,
+                             "provider" => $this->input->post("provider")?$this->input->post("provider"):null,
+                             "consumer" => $this->input->post("consumer"),
+                             "responsible" => $this->input->post("responsible"),
+                             "document" => $this->input->post("document"),
+                             "date" => convert_date($this->input->post("date")),
+                             "quantity" => $this->input->post("quantity"),
+                             "value" => (float)str_replace(",", ".",$this->input->post("value")),
+                             "fiscnote" => $this->input->post("fiscnote"),
+                             "fiscnotedate" => convert_date($this->input->post("fiscnotedate")),
+                             "obs" => $this->input->post("obs"),
+                             "user" => 1);
+
+            if($this->Product_model->add_immediate($immediate)){
+                $data->success = true;
+            }else{
+                $data->success = false;
+                $error = new stdClass();
+                $error->message = "Erro interno, problemas com o banco de dados.";
                 $data->error = $error;
             }
 		}

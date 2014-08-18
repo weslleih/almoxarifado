@@ -141,8 +141,26 @@ CREATE TABLE IF NOT EXISTS `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
--- Restrições para dumps de tabelas
+-- Estrutura para tabela `productimmediate`
 --
+
+CREATE TABLE IF NOT EXISTS `productimmediate` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `product` int(11) NOT NULL,
+  `provider` int(11) DEFAULT NULL,
+  `consumer` int(11) NOT NULL,
+  `responsible` varchar(30) NOT NULL,
+  `document` varchar(30) DEFAULT NULL,
+  `date` date NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `value` decimal(19,9) NOT NULL,
+  `fiscnote` varchar(50) NOT NULL,
+  `fiscnotedate` date NOT NULL,
+  `obs` varchar(255) DEFAULT NULL,
+  `user` int(11) NOT NULL,
+  `registered` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
 -- Restrições para tabelas `product`
@@ -165,6 +183,15 @@ ALTER TABLE `productoutput`
   ADD CONSTRAINT `productoutput_ibfk_1` FOREIGN KEY (`product`) REFERENCES `product` (`id`) ON UPDATE CASCADE ON DELETE RESTRICT,
   ADD CONSTRAINT `productoutput_ibfk_2` FOREIGN KEY (`consumer`) REFERENCES `consumer` (`id`) ON UPDATE CASCADE ON DELETE RESTRICT,
   ADD CONSTRAINT `productoutput_ibfk_3` FOREIGN KEY (`user`) REFERENCES `user` (`id`) ON UPDATE CASCADE ON DELETE RESTRICT;
+
+--
+-- Restrições para tabelas `productimmediate`
+--
+ALTER TABLE `productimmediate`
+  ADD CONSTRAINT `productimmediate_ibfk_1` FOREIGN KEY (`product`) REFERENCES `product` (`id`) ON UPDATE CASCADE ON DELETE RESTRICT,
+  ADD CONSTRAINT `productimmediate_ibfk_2` FOREIGN KEY (`consumer`) REFERENCES `consumer` (`id`) ON UPDATE CASCADE ON DELETE RESTRICT,
+  ADD CONSTRAINT `productimmediate_ibfk_3` FOREIGN KEY (`provider`) REFERENCES `provider` (`id`) ON UPDATE CASCADE ON DELETE RESTRICT,
+  ADD CONSTRAINT `productimmediate_ibfk_4` FOREIGN KEY (`user`) REFERENCES `user` (`id`) ON UPDATE CASCADE ON DELETE RESTRICT;
 
 --
 -- Usuário admin

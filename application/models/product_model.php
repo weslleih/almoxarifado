@@ -190,6 +190,22 @@ class Product_model extends MY_model {
         return false;
     }
 
+    public function remove_immediate($id){
+        $this->db->delete('productimmediate', array('id' => $id));
+        if($this->db->affected_rows() > 0){
+            return true;
+        }
+        return false;
+    }
+
+    public function add_immediate($data){
+        $this->db->insert("productimmediate",$data);
+        if($this->db->affected_rows() > 0){
+            return true;
+        }
+        return false;
+    }
+
     public function get_input_list($start = 0, $limit = 20,$search){
         $this->db->order_by("registered", "desc");
         $this->db->select('*, provider.id AS pid, productinput.id AS id', FALSE);
@@ -267,6 +283,38 @@ class Product_model extends MY_model {
         }
 
         return $this->db->count_all_results('productoutput');
+
+    }
+
+     public function get_immediate_list($start = 0, $limit = 20,$search){
+        $this->db->order_by("registered", "desc");
+        $this->db->select('*, consumer.name AS consumer, productimmediate.id AS id');
+        $this->db->join('consumer', 'consumer.id = productimmediate.consumer');
+
+        if($search["product"]){
+            $this->db->where("product",$search["product"]);
+        }
+
+        $query = $this->db->get('productimmediate', $limit, $start);
+        if ($query->num_rows() > 0){
+            return $query->result();
+        }
+    }
+
+    public function get_immediate_total($search){
+        if(!$search["product"]){
+            return $this->db->count_all('product');
+        }
+
+        $this->db->order_by("registered", "desc");
+        $this->db->select('*');
+        $this->db->join('consumer', 'consumer.id = productimmediate.consumer');
+
+        if($search["product"]){
+            $this->db->where("product",$search["product"]);
+        }
+
+        return $this->db->count_all_results('productimmediate');
 
     }
 

@@ -18,6 +18,11 @@
                             </a>
                         </li>
                         <li role="presentation">
+                            <a data-toggle="modal" data-target="#dynamicModal" href="<?php echo site_url("products/immediate/$product->id");?>">
+                                <span class="glyphicon glyphicon-plus-sign"></span> Consumo imediato
+                            </a>
+                        </li>
+                        <li role="presentation">
                             <a data-toggle="modal" data-target="#dynamicModal" href="<?php echo site_url("products/edit/$product->id");?>">
                                 <span class="glyphicon glyphicon-pencil"></span> Editar
                             </a>
@@ -30,6 +35,11 @@
                         <li role="presentation">
                             <a href="<?php echo site_url("refund/output/$product->id");?>">
                                 <span class="glyphicon glyphicon-chevron-left"></span> Estornar saída
+                            </a>
+                        </li>
+                        <li role="presentation">
+                            <a href="<?php echo site_url("refund/immediate/$product->id");?>">
+                                <span class="glyphicon glyphicon-minus-sign"></span> Estornar comsumo imediato
                             </a>
                         </li>
                     </ul>

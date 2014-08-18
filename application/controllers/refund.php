@@ -89,6 +89,30 @@ class Refund extends MY_Controller {
         }
     }
 
+    public function immediate($id)	{
+
+        $this->load->library("pagination");
+        $page = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
+
+        $search['product'] = $id;
+
+        $data["target"] = site_url("refund/ajaximmediate/$id");
+
+        $data["productimmediates"] = $this->Product_model->get_immediate_list($page,20,$search);
+
+        $config["base_url"] = site_url("refund/immediate");
+        $config["total_rows"] = $this->Product_model->get_immediate_total($search);
+        $config["per_page"] = 20;
+
+        $this->pagination->initialize($config);
+
+        if ($this->input->is_ajax_request()) {
+             $this->load->view('tbodys/refund-immediate',$data);
+        }else{
+            $this->render('refund-immediate',$data);
+        }
+    }
+
     public function ajaxinput($id){
         if($this->input->post('verification')){
             $data = new stdClass();
@@ -124,6 +148,28 @@ class Refund extends MY_Controller {
             $this->jsonoutput($data);
         }else{
             $data["action"] = site_url("refund/ajaxoutput/$id");
+            $data["title"] = "Confirmação!";
+            $data["message"] = "Tem certeza que deseja estornar a saída de código <strong>$id</strong>?";
+
+            $this->load->view('modals/dialog',$data);
+        }
+
+    }
+
+    public function ajaximmediate($id){
+        if($this->input->post('verification')){
+            $data = new stdClass();
+            if($this->Product_model->remove_immediate($id)){
+                $data->success = true;
+            }else{
+                $data->success = false;
+                $error = new stdClass();
+                $error->message = "Erro interno, problemas com o banco de dados.";
+                $data->error = $error;
+            }
+            $this->jsonoutput($data);
+        }else{
+            $data["action"] = site_url("refund/ajaximmediate/$id");
             $data["title"] = "Confirmação!";
             $data["message"] = "Tem certeza que deseja estornar a saída de código <strong>$id</strong>?";
 
