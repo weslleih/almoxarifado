@@ -286,7 +286,7 @@ class Products extends MY_Controller {
                              "fiscnote" => $this->input->post("fiscnote"),
                              "fiscnotedate" => convert_date($this->input->post("fiscnotedate")),
                              "obs" => $this->input->post("obs"),
-                             "user" => 1);
+                             "user" => $this->session->userdata('userid'));
 
             if($this->Product_model->add_input($product)){
                 $data->success = true;
@@ -336,7 +336,7 @@ class Products extends MY_Controller {
                              "quantity" => $this->input->post("quantity"),
                              "date" => convert_date($this->input->post("date")),
                              "document" => $this->input->post("document"),
-                             "user" => 1);
+                             "user" => $this->session->userdata('userid'));
             $resul = $this->Product_model->add_output($product);
             if($resul === true){
                 $data->success = true;
@@ -400,7 +400,7 @@ class Products extends MY_Controller {
                              "fiscnote" => $this->input->post("fiscnote"),
                              "fiscnotedate" => convert_date($this->input->post("fiscnotedate")),
                              "obs" => $this->input->post("obs"),
-                             "user" => 1);
+                             "user" => $this->session->userdata('userid'));
 
             if($this->Product_model->add_immediate($immediate)){
                 $data->success = true;
