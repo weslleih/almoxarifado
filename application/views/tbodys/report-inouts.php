@@ -9,28 +9,28 @@
                 <?php echo $inout->name; ?>
             </td>
             <td>
-                <?php echo "R$".number_format($inout->befvalue, 2, ',', ''); ?>
+                <?php echo "R$".number_format($inout->before, 2, ',', ''); ?>
             </td>
             <td>
-                <?php echo "R$".number_format($inout->invalue, 2, ',', ''); ?>
+                <?php echo "R$".number_format($inout->input, 2, ',', ''); ?>
             </td>
             <td>
-                <?php echo number_format($inout->inquantity, 2, ',', ''); ?>
+                <?php echo "R$".number_format($inout->infisic, 2, ',', ''); ?>
             </td>
             <td>
-                <?php //echo $inout->; ?>
+                <?php echo "R$".number_format($inout->inimmediate, 2, ',', ''); ?>
             </td>
             <td>
-                <?php echo "R$".number_format($inout->outvalue, 2, ',', ''); ?>
+                <?php echo "R$".number_format($inout->output, 2, ',', ''); ?>
             </td>
             <td>
-                <?php echo number_format($inout->outquantity, 2, ',', ''); ?>
+                <?php echo "R$".number_format($inout->outfisic, 2, ',', ''); ?>
             </td>
             <td>
-                <?php //echo $inout->name; ?>
+                <?php echo "R$".number_format($inout->outimmediate, 2, ',', ''); ?>
             </td>
             <td>
-                <?php echo "R$".number_format($inout->value*$inout->quantity, 2, ',', ''); ?>
+                <?php echo "R$".number_format($inout->now, 2, ',', ''); ?>
             </td>
         </tr>
     <?php } ?>
