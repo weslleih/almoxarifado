@@ -196,4 +196,4 @@ ALTER TABLE `productimmediate`
 --
 -- Usuário admin
 --
-INSERT INTO `almoxarifado`.`user` (`id`, `name`, `login`, `password`, `level`, `lastlogin`, `active`) VALUES (NULL, 'admin', 'admin', SHA1('123456'), '3', NULL, '1');
+INSERT INTO `user` (`id`, `name`, `login`, `password`, `level`, `lastlogin`, `active`) VALUES (NULL, 'admin', 'admin', SHA1('123456'), '3', NULL, '1');
