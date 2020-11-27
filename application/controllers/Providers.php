@@ -68,15 +68,15 @@ class Providers extends MY_Controller {
         $this->load->helper(array("form", "url"));
 		$this->load->library("form_validation");
 
-        $this->form_validation->set_rules("idprovider", "Código", "trim|is_unic[provider.idprovider]|xss_clean");
-        $this->form_validation->set_rules("name", "Razão Social", "trim|required|xss_clean");
-        $this->form_validation->set_rules("document", "CPF/CNPJ", "trim|required|is_unic[provider.document]|xss_clean");
-        $this->form_validation->set_rules("email", "Email", "trim|valid_email|xss_clean");
-        $this->form_validation->set_rules("phone1", "Telefone", "trim|xss_clean");
-        $this->form_validation->set_rules("phone1resp", "Responsável", "trim|xss_clean");
-        $this->form_validation->set_rules("phone2", "Telefone", "trim|xss_clean");
-        $this->form_validation->set_rules("phone2resp", "Respnsável", "trim|xss_clean");
-        $this->form_validation->set_rules("address", "Endereço", "trim|xss_clean");
+        $this->form_validation->set_rules("idprovider", "Código", "trim|is_unique[provider.id]");
+        $this->form_validation->set_rules("name", "Razão Social", "trim|required");
+        $this->form_validation->set_rules("document", "CPF/CNPJ", "trim|required|is_unique[provider.document]");
+        $this->form_validation->set_rules("email", "Email", "trim|valid_email");
+        $this->form_validation->set_rules("phone1", "Telefone", "trim");
+        $this->form_validation->set_rules("phone1resp", "Responsável", "trim");
+        $this->form_validation->set_rules("phone2", "Telefone", "trim");
+        $this->form_validation->set_rules("phone2resp", "Respnsável", "trim");
+        $this->form_validation->set_rules("address", "Endereço", "trim");
 
         $this->form_validation->set_message("is_unique", "%s já está cadastrado no sistema");
 
@@ -127,15 +127,15 @@ class Providers extends MY_Controller {
         $this->load->helper(array("form", "url"));
 		$this->load->library("form_validation");
 
-        $this->form_validation->set_rules("idprovider", "Código","trim|is_unic_edit[provider.idprovider,idprovider.$id]|xss_clean");
-        $this->form_validation->set_rules("name", "Razão Social", "trim|required|xss_clean");
-        $this->form_validation->set_rules("document", "CPF/CNPJ", "trim|required|is_unic_edit[provider.document,idprovider.$id]|xss_clean");
-        $this->form_validation->set_rules("email", "Email", "trim|xss_clean");
-        $this->form_validation->set_rules("phone1", "Telefone", "trim|xss_clean");
-        $this->form_validation->set_rules("phone1resp", "Responsável", "trim|xss_clean");
-        $this->form_validation->set_rules("phone2", "Telefone", "trim|xss_clean");
-        $this->form_validation->set_rules("phone2resp", "Respnsável", "trim|xss_clean");
-        $this->form_validation->set_rules("address", "Endereço", "trim|xss_clean");
+        $this->form_validation->set_rules("idprovider", "Código","trim");
+        $this->form_validation->set_rules("name", "Razão Social", "trim|required");
+        $this->form_validation->set_rules("document", "CPF/CNPJ", "trim|required|is_unique_edit[$id,provider,document,id]");
+        $this->form_validation->set_rules("email", "Email", "trim");
+        $this->form_validation->set_rules("phone1", "Telefone", "trim");
+        $this->form_validation->set_rules("phone1resp", "Responsável", "trim");
+        $this->form_validation->set_rules("phone2", "Telefone", "trim");
+        $this->form_validation->set_rules("phone2resp", "Respnsável", "trim");
+        $this->form_validation->set_rules("address", "Endereço", "trim");
 
         $this->form_validation->set_message("is_unique", "%s já está cadastrado no sistema");
 

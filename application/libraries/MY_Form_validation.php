@@ -33,12 +33,11 @@ class MY_Form_validation extends CI_Form_validation
 	 * @param	fields
 	 * @return	bool
 	 */
-    public function is_unique_edit($f_value,$fields){
+    public function is_unique_edit($form_value,$args){
 
-        list($f_field, $s_field)=explode(',', $fields);
-        list($table, $f_field)=explode('.', $f_field);
-        list($s_field, $s_value)=explode('.', $s_field);
-        $query = $this->CI->db->limit(1)->get_where($table, array($f_field => $f_value, "$s_field <>" => $s_value));
+        list($pk_value, $table, $column, $pk_ident)=explode(',', $args);
+        //Is there any record where table.column equals form_value that isn't the one we're editing?
+        $query = $this->CI->db->limit(1)->get_where($table, array($column => $form_value, "$pk_ident <>" => $pk_value));
 
 		return $query->num_rows() === 0;
 	}

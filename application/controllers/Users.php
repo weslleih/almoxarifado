@@ -51,12 +51,12 @@
         $this->load->helper(array("form", "url"));
 		$this->load->library("form_validation");
 
-        $this->form_validation->set_rules("name", "Nome", "trim|required|xss_clean");
-		$this->form_validation->set_rules("password", "Senha", "required|sha1");
+        $this->form_validation->set_rules("name", "Nome", "trim|required");
+		$this->form_validation->set_rules("password", "Senha", "required");
         $this->form_validation->set_rules("password2", "Confirmação", "required|matches[password]");
-		$this->form_validation->set_rules("login", "Login", "trim|required|is_unique[user.login]|xss_clean");
-        $this->form_validation->set_rules("level", "Nível", "trim|required|xss_clean");
-        $this->form_validation->set_rules("active", "Ativo", "trim|required|xss_clean");
+		$this->form_validation->set_rules("login", "Login", "trim|required|is_unique[user.login]");
+        $this->form_validation->set_rules("level", "Nível", "trim|required");
+        $this->form_validation->set_rules("active", "Ativo", "trim|required");
 
         $this->form_validation->set_message("is_unique", "%s já está cadastrado no sistema");
 
@@ -68,7 +68,7 @@
             $data->error = $this->form_validation->error_array();;
 		}else{
             $user = array("name" => $this->input->post("name"),
-                         "password" => $this->input->post("password"),
+                         "password" => sha1($this->input->post("password")),
                          "login" => $this->input->post("login"),
                          "active" => $this->input->post("active"),
                          "level" => $this->input->post("level"));
@@ -100,12 +100,12 @@
         $this->load->helper(array("form", "url"));
 		$this->load->library("form_validation");
 
-        $this->form_validation->set_rules("name", "Nome", "trim|required|xss_clean");
+        $this->form_validation->set_rules("name", "Nome", "trim|required");
 		$this->form_validation->set_rules("password", "Senha", "sha1");
         $this->form_validation->set_rules("password2", "Confirmação", "matches[password]");
-		$this->form_validation->set_rules("login", "Login", "trim|required|is_unique_edit[user.login,iduser.$id]|xss_clean");
-        $this->form_validation->set_rules("level", "Nível", "trim|required|xss_clean");
-        $this->form_validation->set_rules("active", "Ativo", "trim|required|xss_clean");
+		$this->form_validation->set_rules("login", "Login", "trim|required|is_unique_edit[$id,user,login,id]");
+        $this->form_validation->set_rules("level", "Nível", "trim|required");
+        $this->form_validation->set_rules("active", "Ativo", "trim|required");
 
         $this->form_validation->set_message("is_unique", "%s já está cadastrado no sistema");
 

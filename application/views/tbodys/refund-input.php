@@ -1,4 +1,5 @@
 <?php if (isset($productinputs) && is_array($productinputs)){ ?>
+<?php $this->load->helper('security'); ?>
 <tbody>
     <?php foreach($productinputs as $productinput){ ?>
         <tr>
@@ -9,7 +10,7 @@
                 <?php echo $productinput->id; ?>
             </td>
             <td>
-                <?php echo $productinput->name; ?>
+                <?php echo xss_clean($productinput->name); ?>
             </td>
             <td>
                 <?php echo convert_date($productinput->date); ?>
@@ -21,7 +22,7 @@
                 <?php echo "R$".number_format($productinput->value, 2, ',', '');?>
             </td>
             <td>
-                <?php echo $productinput->empenho;?>
+                <?php echo xss_clean($productinput->empenho);?>
             </td>
         </tr>
     <?php } ?>

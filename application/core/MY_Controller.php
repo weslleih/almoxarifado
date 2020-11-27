@@ -4,7 +4,7 @@ class MY_Controller extends CI_Controller {
         parent::__construct();
         $this->load->library('session');
         if(!$this->session->userdata('level')){
-            redirect('/session/login', 'refresh');
+            redirect('/sess/login', 'refresh');
         }
     }
     protected function render($view,$data){

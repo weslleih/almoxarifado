@@ -1,3 +1,4 @@
+<?php $this->load->helper('security'); ?>
 <div class="table-header">
     <form role="form" class="form-inline form-table-search" method="post" action="<?php echo $action;?>">
         <?php if($this->session->userdata('level') == 2) { ?>
@@ -19,7 +20,7 @@
                 <?php
                 if(isset($groups)){
                     foreach($groups as $group){
-                        echo "<option value='$group->id'>$group->id - $group->name</option>";
+                        echo "<option value='$group->id'>$group->id - ".xss_clean($group->name)."</option>";
                     }
                 }
                 ?>

@@ -57,8 +57,8 @@
         $this->load->helper(array("form", "url"));
 		$this->load->library("form_validation");
 
-        $this->form_validation->set_rules("idconsumer", "Código", "trim|is_unic[consumer.idconsumer]|xss_clean");
-        $this->form_validation->set_rules("name", "Nome", "trim|required|xss_clean");
+        $this->form_validation->set_rules("idconsumer", "Código", "trim|is_unique[consumer.id]");
+        $this->form_validation->set_rules("name", "Nome", "trim|required");
 
         $this->form_validation->set_message("is_unique", "%s já está cadastrado no sistema");
 
@@ -102,8 +102,8 @@
         $this->load->helper(array("form", "url"));
 		$this->load->library("form_validation");
 
-        $this->form_validation->set_rules("idconsumer", "Código","trim|is_unic_edit[consumer.idconsumer,idconsumer.$id]|xss_clean");
-        $this->form_validation->set_rules("name", "Nome", "trim|required|xss_clean");
+        $this->form_validation->set_rules("idconsumer", "Código","trim");
+        $this->form_validation->set_rules("name", "Nome", "trim|required");
 
         $this->form_validation->set_message("is_unique", "%s já está cadastrado no sistema");
 

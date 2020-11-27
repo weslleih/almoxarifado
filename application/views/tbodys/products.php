@@ -1,4 +1,5 @@
 <?php if (isset($products)){ ?>
+<?php $this->load->helper('security'); ?>
 <tbody>
     <?php foreach($products as $product){?>
         <tr>
@@ -51,14 +52,14 @@
             </td>
             <td>
                 <div class="popover-button" data-toggle="popover" data-content="<?php echo $product->observation; ?>" data-trigger="hover" data-placement="bottom">
-                <?php echo $product->name; ?>
+                <?php echo xss_clean($product->name); ?>
                 </div>
             </td>
             <td>
-                <?php echo $product->gname; ?>
+                <?php echo xss_clean($product->gname); ?>
             </td>
             <td>
-                <?php echo "$product->quantity $product->unit"; ?>
+                <?php echo "$product->quantity ".xss_clean($product->unit); ?>
             </td>
             <td>
                 <?php echo "R$".number_format($product->value, 2, ',', '');?>

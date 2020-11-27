@@ -143,14 +143,14 @@ class Products extends MY_Controller {
         $this->load->helper(array("form", "url"));
 		$this->load->library("form_validation");
 
-        $this->form_validation->set_rules("idproduct", "Código", "trim|is_unic[product.idproduct]|xss_clean");
-        $this->form_validation->set_rules("name", "Nome", "trim|required|xss_clean");
-        $this->form_validation->set_rules("idgroup", "Grupo", "trim|required|xss_clean");
-        $this->form_validation->set_rules("unit", "Unidade", "trim|required|xss_clean");
-        $this->form_validation->set_rules("maxinvent", "Estoque Máximo ", "trim|xss_clean");
-        $this->form_validation->set_rules("mininvent", "Estoque Mínimo", "trim|xss_clean");
-        $this->form_validation->set_rules("catmat", "CatMat", "trim|xss_clean");
-        $this->form_validation->set_rules("observation", "Observações", "trim|xss_clean");
+        $this->form_validation->set_rules("idproduct", "Código", "trim|is_unique[product.id]");
+        $this->form_validation->set_rules("name", "Nome", "trim|required");
+        $this->form_validation->set_rules("idgroup", "Grupo", "trim|required");
+        $this->form_validation->set_rules("unit", "Unidade", "trim|required");
+        $this->form_validation->set_rules("maxinvent", "Estoque Máximo ", "trim");
+        $this->form_validation->set_rules("mininvent", "Estoque Mínimo", "trim");
+        $this->form_validation->set_rules("catmat", "CATMAT", "trim");
+        $this->form_validation->set_rules("observation", "Observações", "trim");
 
         $this->form_validation->set_message("is_unique", "%s já está cadastrado no sistema");
 
@@ -200,14 +200,14 @@ class Products extends MY_Controller {
         $this->load->helper(array("form", "url"));
 		$this->load->library("form_validation");
 
-        $this->form_validation->set_rules("idproduct", "Código","trim|is_unic_edit[product.id,id.$id]|xss_clean");
-        $this->form_validation->set_rules("name", "Nome", "trim|required|xss_clean");
-        $this->form_validation->set_rules("idgroup", "Grupo", "trim|required|xss_clean");
-        $this->form_validation->set_rules("unit", "Unidade", "trim|required|xss_clean");
-        $this->form_validation->set_rules("maxinvent", "Estoque Máximo ", "trim|xss_clean");
-        $this->form_validation->set_rules("mininvent", "Estoque Mínimo", "trim|xss_clean");
-        $this->form_validation->set_rules("catmat", "CatMat", "trim|xss_clean");
-        $this->form_validation->set_rules("observation", "Observações", "trim|xss_clean");
+        $this->form_validation->set_rules("idproduct", "Código","trim");
+        $this->form_validation->set_rules("name", "Nome", "trim|required");
+        $this->form_validation->set_rules("idgroup", "Grupo", "trim|required");
+        $this->form_validation->set_rules("unit", "Unidade", "trim|required");
+        $this->form_validation->set_rules("maxinvent", "Estoque Máximo ", "trim");
+        $this->form_validation->set_rules("mininvent", "Estoque Mínimo", "trim");
+        $this->form_validation->set_rules("catmat", "CATMAT", "trim");
+        $this->form_validation->set_rules("observation", "Observações", "trim");
 
         $this->form_validation->set_message("is_unique", "%s já está cadastrado no sistema");
 
@@ -257,15 +257,15 @@ class Products extends MY_Controller {
         $this->load->helper(array("form", "url"));
 		$this->load->library("form_validation");
 
-        $this->form_validation->set_rules("provider", "Fornecedor","trim|required|xss_clean");
-        $this->form_validation->set_rules("date", "Data", "trim|required|xss_clean");
-        $this->form_validation->set_rules("quantity", "Quantidade", "trim|required|xss_clean");
-        $this->form_validation->set_rules("value", "Valor unitário", "trim|required|max_length[10]|callback_valid_brl|xss_clean");
-        $this->form_validation->set_rules("empenho", "Empenho", "trim|xss_clean");
-        $this->form_validation->set_rules("empenhodate", "Data do empenho", "trim|xss_clean");
-        $this->form_validation->set_rules("fiscnote", "Nota fiscal ", "trim|xss_clean");
-        $this->form_validation->set_rules("fiscnotedate", "Data da nota fiscal", "trim|xss_clean");
-        $this->form_validation->set_rules("obs", "Observações", "trim|xss_clean");
+        $this->form_validation->set_rules("provider", "Fornecedor","trim|required");
+        $this->form_validation->set_rules("date", "Data", "trim|required");
+        $this->form_validation->set_rules("quantity", "Quantidade", "trim|required");
+        $this->form_validation->set_rules("value", "Valor unitário", "trim|required|max_length[10]|callback_valid_brl");
+        $this->form_validation->set_rules("empenho", "Empenho", "trim");
+        $this->form_validation->set_rules("empenhodate", "Data do empenho", "trim");
+        $this->form_validation->set_rules("fiscnote", "Nota fiscal ", "trim");
+        $this->form_validation->set_rules("fiscnotedate", "Data da nota fiscal", "trim");
+        $this->form_validation->set_rules("obs", "Observações", "trim");
 
         $this->form_validation->set_message("valid_brl", "%s não é um valor de moéda válido");
 
@@ -315,11 +315,11 @@ class Products extends MY_Controller {
         $this->load->helper(array("form", "url"));
 		$this->load->library("form_validation");
 
-        $this->form_validation->set_rules("consumer", "Consumidor","trim|required|xss_clean");
-        $this->form_validation->set_rules("responsible", "Recebente", "trim|required|xss_clean");
-        $this->form_validation->set_rules("date", "Data", "trim|xss_clean");
-        $this->form_validation->set_rules("quantity", "Quantidade", "trim|xss_clean");
-        $this->form_validation->set_rules("document", "Nota fiscal ", "trim|xss_clean");
+        $this->form_validation->set_rules("consumer", "Consumidor","trim|required");
+        $this->form_validation->set_rules("responsible", "Recebente", "trim|required");
+        $this->form_validation->set_rules("date", "Data", "trim");
+        $this->form_validation->set_rules("quantity", "Quantidade", "trim");
+        $this->form_validation->set_rules("document", "Nota fiscal ", "trim");
 
         $this->form_validation->set_message("callback_valid_brl", "%s não é um valor de moéda válido");
 
@@ -369,16 +369,16 @@ class Products extends MY_Controller {
         $this->load->helper(array("form", "url"));
 		$this->load->library("form_validation");
 
-        $this->form_validation->set_rules("provider", "Fornecedor","trim|xss_clean");
-        $this->form_validation->set_rules("date", "Data", "trim|required|xss_clean");
-        $this->form_validation->set_rules("consumer", "Consumidor","trim|required|xss_clean");
-        $this->form_validation->set_rules("responsible", "Recebente", "trim|required|xss_clean");
-        $this->form_validation->set_rules("document", "Nota fiscal ", "trim|xss_clean");
-        $this->form_validation->set_rules("quantity", "Quantidade", "trim|required|xss_clean");
-        $this->form_validation->set_rules("value", "Valor unitário", "trim|required|max_length[10]|callback_valid_brl|xss_clean");
-        $this->form_validation->set_rules("fiscnote", "Nota fiscal ", "trim|xss_clean");
-        $this->form_validation->set_rules("fiscnotedate", "Data da nota fiscal", "trim|xss_clean");
-        $this->form_validation->set_rules("obs", "Observações", "trim|xss_clean");
+        $this->form_validation->set_rules("provider", "Fornecedor","trim");
+        $this->form_validation->set_rules("date", "Data", "trim|required");
+        $this->form_validation->set_rules("consumer", "Consumidor","trim|required");
+        $this->form_validation->set_rules("responsible", "Recebente", "trim|required");
+        $this->form_validation->set_rules("document", "Nota fiscal ", "trim");
+        $this->form_validation->set_rules("quantity", "Quantidade", "trim|required");
+        $this->form_validation->set_rules("value", "Valor unitário", "trim|required|max_length[10]|callback_valid_brl");
+        $this->form_validation->set_rules("fiscnote", "Nota fiscal ", "trim");
+        $this->form_validation->set_rules("fiscnotedate", "Data da nota fiscal", "trim");
+        $this->form_validation->set_rules("obs", "Observações", "trim");
 
         $this->form_validation->set_message("valid_brl", "%s não é um valor de moéda válido");
 

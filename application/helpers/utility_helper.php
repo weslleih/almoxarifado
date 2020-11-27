@@ -5,7 +5,7 @@ function asset_url($str){
 
 function insert_input_value($conext,$var_name){
     if($conext->is_cached_var($var_name)){
-        echo "value='".$conext->get_cached_var($var_name)."'";
+        echo "value='".html_escape($conext->get_cached_var($var_name))."'";
     }
 }
 

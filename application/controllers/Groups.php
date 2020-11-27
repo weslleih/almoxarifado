@@ -60,8 +60,8 @@
         $this->load->helper(array("form", "url"));
 		$this->load->library("form_validation");
 
-        $this->form_validation->set_rules("idgroup", "Código", "trim|is_unic[group.idgroup]|xss_clean");
-        $this->form_validation->set_rules("name", "Razão Social", "trim|required|xss_clean");
+        $this->form_validation->set_rules("idgroup", "Código", "trim|is_unique[group.id]");
+        $this->form_validation->set_rules("name", "Nome do grupo", "trim|required");
 
         $this->form_validation->set_message("is_unique", "%s já está cadastrado no sistema");
 
@@ -105,8 +105,8 @@
         $this->load->helper(array("form", "url"));
 		$this->load->library("form_validation");
 
-        $this->form_validation->set_rules("idgroup", "Código","trim|is_unic_edit[group.id,id.$id]|xss_clean");
-        $this->form_validation->set_rules("name", "Razão Social", "trim|required|xss_clean");
+        $this->form_validation->set_rules("idgroup", "Código","trim");
+        $this->form_validation->set_rules("name", "Nome do grupo", "trim|required");
 
         $this->form_validation->set_message("is_unique", "%s já está cadastrado no sistema");
 

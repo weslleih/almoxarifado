@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Session extends CI_Controller {
+class Sess extends CI_Controller {
      function __construct() {
         parent::__construct();
         $this->load->model("User_model");
@@ -14,8 +14,8 @@ class Session extends CI_Controller {
         $this->load->helper(array("form", "url"));
 		$this->load->library("form_validation");
 
-        $this->form_validation->set_rules("login", "Login", "trim|required|callback_login_check[".$this->input->post('password')."]|xss_clean");
-        $this->form_validation->set_rules("password", "Senha", "trim|required|xss_clean");
+        $this->form_validation->set_rules("login", "Login", "trim|required|callback_login_check[".$this->input->post('password')."]");
+        $this->form_validation->set_rules("password", "Senha", "trim|required");
 
         $this->form_validation->set_error_delimiters('<div class="alert alert-danger" role="alert">', '</div>');
 

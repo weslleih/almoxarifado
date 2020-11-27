@@ -1,5 +1,6 @@
 
 <?php if (isset($consumers) && is_array($consumers)){ ?>
+<?php $this->load->helper('security'); ?>
 <tbody>
     <?php foreach($consumers as $consumer){ ?>
         <tr>
@@ -10,7 +11,7 @@
                 <?php echo $consumer->id; ?>
             </td>
             <td>
-                <?php echo $consumer->name; ?>
+                <?php echo xss_clean($consumer->name); ?>
             </td>
         </tr>
     <?php } ?>
