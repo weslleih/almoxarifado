@@ -245,7 +245,6 @@ $config['encryption_key'] = '';
 |
 */
 $config['sess_driver']		= 'files';
-$config['sess_save_path'] = BASEPATH . 'sessions';
 $config['sess_cookie_name']		= 'ci_session';
 $config['sess_expiration']		= 7200;
 $config['sess_use_database']	= FALSE;

@@ -116,7 +116,10 @@ class Product_model extends MY_model {
                 $product = $query->row();
 
                 $tot = $product->quantity - $input->quantity;
-                $avg = (($product->quantity*$product->value)-($input->quantity*$input->value))/ $tot;
+                $avg = 0;
+                if ($tot != 0) {
+                    $avg = (($product->quantity*$product->value)-($input->quantity*$input->value))/ $tot;
+                }
 
                 $this->update($product->id,array("value" => $avg, "quantity" => $tot));
                 $this->db->delete('productinput', array('id' => $id));
@@ -176,7 +179,10 @@ class Product_model extends MY_model {
                 $product = $query->row();
 
                 $tot = $product->quantity + $output->quantity;
-                $avg = (($product->quantity*$product->value)+($output->quantity*$output->value))/ $tot;
+                $avg = 0;
+                if ($tot != 0) {
+                    $avg = (($product->quantity*$product->value)+($output->quantity*$output->value))/ $tot;
+                }
 
                 $this->update($product->id,array("value" => $avg, "quantity" => $tot));
                 $this->db->delete('productoutput', array('id' => $id));

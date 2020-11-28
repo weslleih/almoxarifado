@@ -164,11 +164,15 @@ class Products extends MY_Controller {
             $product = array("name" => $this->input->post("name"),
                          "group" => $this->input->post("idgroup"),
                          "unit" => $this->input->post("unit"),
-                         "maxinvent" => $this->input->post("maxinvent"),
-                         "mininvent" => $this->input->post("mininvent"),
                          "catmat" => $this->input->post("catmat"),
                          "observation" => $this->input->post("observation"));
 
+            if($this->input->post("maxinvent") != ''){
+                $product['maxinvent'] = $this->input->post("maxinvent");
+            }
+            if($this->input->post("mininvent") != ''){
+                $product['mininvent'] = $this->input->post("mininvent");
+            }
             if($this->input->post("idproduct") != ''){
                 $product['id'] = $this->input->post("idproduct");
             }
@@ -259,7 +263,7 @@ class Products extends MY_Controller {
 
         $this->form_validation->set_rules("provider", "Fornecedor","trim|required");
         $this->form_validation->set_rules("date", "Data", "trim|required");
-        $this->form_validation->set_rules("quantity", "Quantidade", "trim|required");
+        $this->form_validation->set_rules("quantity", "Quantidade", "trim|required|greater_than[0]");
         $this->form_validation->set_rules("value", "Valor unitário", "trim|required|max_length[10]|callback_valid_brl");
         $this->form_validation->set_rules("empenho", "Empenho", "trim");
         $this->form_validation->set_rules("empenhodate", "Data do empenho", "trim");
@@ -268,6 +272,7 @@ class Products extends MY_Controller {
         $this->form_validation->set_rules("obs", "Observações", "trim");
 
         $this->form_validation->set_message("valid_brl", "%s não é um valor de moéda válido");
+        $this->form_validation->set_message("greater_than", "%s deve ser maior que %d");
 
         $data = new stdClass();
 
@@ -318,10 +323,11 @@ class Products extends MY_Controller {
         $this->form_validation->set_rules("consumer", "Consumidor","trim|required");
         $this->form_validation->set_rules("responsible", "Recebente", "trim|required");
         $this->form_validation->set_rules("date", "Data", "trim");
-        $this->form_validation->set_rules("quantity", "Quantidade", "trim");
+        $this->form_validation->set_rules("quantity", "Quantidade", "trim|greater_than[0]");
         $this->form_validation->set_rules("document", "Nota fiscal ", "trim");
 
         $this->form_validation->set_message("callback_valid_brl", "%s não é um valor de moéda válido");
+        $this->form_validation->set_message("greater_than", "%s deve ser maior que %d");
 
         $data = new stdClass();
 
@@ -374,13 +380,14 @@ class Products extends MY_Controller {
         $this->form_validation->set_rules("consumer", "Consumidor","trim|required");
         $this->form_validation->set_rules("responsible", "Recebente", "trim|required");
         $this->form_validation->set_rules("document", "Nota fiscal ", "trim");
-        $this->form_validation->set_rules("quantity", "Quantidade", "trim|required");
+        $this->form_validation->set_rules("quantity", "Quantidade", "trim|required|greater_than[0]");
         $this->form_validation->set_rules("value", "Valor unitário", "trim|required|max_length[10]|callback_valid_brl");
         $this->form_validation->set_rules("fiscnote", "Nota fiscal ", "trim");
         $this->form_validation->set_rules("fiscnotedate", "Data da nota fiscal", "trim");
         $this->form_validation->set_rules("obs", "Observações", "trim");
 
         $this->form_validation->set_message("valid_brl", "%s não é um valor de moéda válido");
+        $this->form_validation->set_message("greater_than", "%s deve ser maior que %d");
 
         $data = new stdClass();
 
