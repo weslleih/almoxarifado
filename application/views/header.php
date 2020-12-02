@@ -90,7 +90,7 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="<?php echo site_url("session/logout");?>">Sair</a>
+                        <a href="<?php echo site_url("sess/logout");?>">Sair</a>
                     </li>
                     <li>
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sobre<span class="caret"></span></a>

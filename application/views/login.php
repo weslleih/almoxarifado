@@ -25,7 +25,7 @@
 
 <body>
     <div class="container">
-        <form class="form-signin" role="form" action="<?php echo site_url("session/login");?>" method="post">
+        <form class="form-signin" role="form" action="<?php echo site_url("sess/login");?>" method="post">
             <h2 class="form-signin-heading">Almoxarifado</h2>
             <?php echo validation_errors(); ?>
             <input name="login" type="text" class="form-control" placeholder="login" required autofocus value="<?php echo set_value('login'); ?>">

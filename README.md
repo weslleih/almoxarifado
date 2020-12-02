@@ -36,7 +36,8 @@ Instalação
   - ``` $db['default']['password'] = ''; ``` Senha do usuário
   - ``` $db['default']['database'] = ''; ``` Nome do banco de dados
 - Execute este [SQL](https://github.com/weslleih/almoxarifado/blob/master/application/installation/database.sql) para terminar a configuração do banco de dados
-- Edite o aquivo ``` application/config/config.php ``` na linha:
+- Edite o aquivo ``` application/config/config.php ``` nas linhas:
+  - ``` $config['base_url'] = ''; ``` Endereço da instalação com o sufixo / (barra). Exemplo: ```http://example.com/```
   - ``` $config['encryption_key'] = ''; ``` Com uma chave de segurança de 32 caracteres (256 bits) que pode ser gerada [aqui](http://randomkeygen.com/)
 - Agora basta acessar a url definida nas configurações do Apache.
 - Primeiro login:
@@ -46,7 +47,7 @@ Instalação
 Créditos
 ------------
 - Distribuído sob licença [MIT](https://github.com/weslleih/almoxarifado/blob/master/LICENSE) 
-- [CodeIgniter](http://ellislab.com/codeigniter) Copyright (c) 2008 - 2014, EllisLab, Inc.
+- [CodeIgniter](https://codeigniter.com/) Copyright (c) 2014 - 2019, British Columbia Institute of Technology
 - [jQuery](https://jquery.org) Copyright 2014 The jQuery Foundation.
 - [Bootstrap](http://getbootstrap.com/) Copyright (c) 2011-2014 Twitter, Inc.
 - [Numeric](http://www.texotela.co.uk/code/jquery/numeric/) Copyright (c) 2006-2014 Sam Collett

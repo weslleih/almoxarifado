@@ -1,3 +1,4 @@
+<?php $this->load->helper('security'); ?>
 <div class="table-header">
     <form role="form" class="form-inline form-table-search" method="post" action="<?php //echo $action;?>">
         <div class="form-group">
@@ -18,7 +19,7 @@
                 <?php
                 if(isset($groups)){
                     foreach($groups as $group){
-                        echo "<option value='$group->id'>$group->id - $group->name</option>";
+                        echo "<option value='$group->id'>$group->id - ".xss_clean($group->name)."</option>";
                     }
                 }
                 ?>

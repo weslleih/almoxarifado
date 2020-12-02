@@ -1,4 +1,5 @@
 <?php if (isset($inouts) && is_array($inouts)){; ?>
+<?php $this->load->helper('security'); ?>
 <tbody>
     <?php foreach($inouts as $inout){ ?>
         <tr>
@@ -6,7 +7,7 @@
                 <?php echo $inout->id; ?>
             </td>
             <td>
-                <?php echo $inout->name; ?>
+                <?php echo xss_clean($inout->name); ?>
             </td>
             <td>
                 <?php echo "R$".number_format($inout->before, 2, ',', ''); ?>

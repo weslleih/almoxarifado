@@ -1,3 +1,4 @@
+<?php $this->load->helper('security'); ?>
 <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Fechar</span>
     </button>
@@ -14,7 +15,7 @@
                 <input name="" type="text" class="form-control" id="inputNomeProduto" placeholder="Código" disabled value="<?php echo $id ?>">
             </div>
             <div class="col-sm-7">
-                <input name="" type="text" class="form-control" id="inputNomeProduto" placeholder="Nome do produto" disabled value="<?php echo $name ?>">
+                <input name="" type="text" class="form-control" id="inputNomeProduto" placeholder="Nome do produto" disabled value="<?php echo xss_clean($name) ?>">
             </div>
         </div>
         <div class="form-group">
@@ -32,7 +33,7 @@
                 <select class="form-control select2 select2-together">
                 <?php if(isset($providers)){ ?>
                     <?php foreach($providers as $provider){ ?>
-                        <option value='<?php echo $provider->id ?>'><?php echo $provider->name?></option>;
+                        <option value='<?php echo $provider->id ?>'><?php echo xss_clean($provider->name)?></option>;
                     <?php } ?>
                 <?php } ?>
                 </select>
@@ -49,7 +50,7 @@
             <div class="col-sm-10">
                 <div class="input-group">
                     <input name="quantity" type="text" pattern="[0-9]+" class="form-control numeric quantity" id="inputGrupo">
-                    <div class="input-group-addon"><?php echo $unit ?></div>
+                    <div class="input-group-addon"><?php echo xss_clean($unit) ?></div>
                 </div>
             </div>
 

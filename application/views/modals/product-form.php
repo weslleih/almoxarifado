@@ -1,3 +1,4 @@
+<?php $this->load->helper('security'); ?>
 <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Fechar</span>
     </button>
@@ -34,7 +35,7 @@
                 <option></option>
                 <?php if(isset($groups)){ ?>
                     <?php foreach($groups as $group){ ?>
-                        <option value='<?php echo $group->id ?>' <?php insert_option_value($this,"group",$group->id)?>><?php echo $group->name?></option> ";
+                        <option value='<?php echo $group->id ?>' <?php insert_option_value($this,"group",$group->id)?>><?php echo xss_clean($group->name)?></option> ";
                     <?php } ?>
                 <?php } ?>
                 </select>
@@ -62,7 +63,7 @@
             </div>
         </div>
          <div class="form-group">
-            <label for="inputGrupo" class="col-sm-2 control-label">CatMat</label>
+            <label for="inputGrupo" class="col-sm-2 control-label">CATMAT</label>
             <div class="col-sm-10">
                 <input name="catmat" type="text" class="form-control" id="inputGrupo" placeholder="" <?php insert_input_value($this,"catmat");?>>
             </div>

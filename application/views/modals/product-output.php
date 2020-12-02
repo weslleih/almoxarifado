@@ -1,3 +1,4 @@
+<?php $this->load->helper('security'); ?>
 <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Fechar</span>
     </button>
@@ -32,7 +33,7 @@
                 <select class="form-control select2 select2-together">
                 <?php if(isset($consumers)){ ?>
                     <?php foreach($consumers as $consumer){ ?>
-                        <option value='<?php echo $consumer->id ?>'><?php echo $consumer->name?></option>;
+                        <option value='<?php echo $consumer->id ?>'><?php echo xss_clean($consumer->name)?></option>;
                     <?php } ?>
                 <?php } ?>
                 </select>
@@ -55,7 +56,7 @@
             <div class="col-sm-10">
                 <div class="input-group">
                     <input name="quantity" type="text" pattern="[0-9]+" class="form-control numeric quantity" id="inputGrupo">
-                    <div class="input-group-addon"><?php echo $unit ?></div>
+                    <div class="input-group-addon"><?php echo xss_clean($unit) ?></div>
                 </div>
             </div>
 

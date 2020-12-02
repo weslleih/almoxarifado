@@ -1,4 +1,5 @@
 <?php if (isset($productimmediates) && is_array($productimmediates)){ ?>
+<?php $this->load->helper('security'); ?>
 <tbody>
     <?php foreach($productimmediates as $productimmediate){ ?>
         <tr>
@@ -9,7 +10,7 @@
                 <?php echo $productimmediate->id; ?>
             </td>
             <td>
-                <?php echo $productimmediate->fiscnote; ?>
+                <?php echo xss_clean($productimmediate->fiscnote); ?>
             </td>
             <td>
                 <?php echo convert_date($productimmediate->date); ?>
@@ -21,7 +22,7 @@
                 <?php echo "R$".number_format($productimmediate->value, 2, ',', '');?>
             </td>
             <td>
-                <?php echo $productimmediate->consumer;?>
+                <?php echo xss_clean($productimmediate->consumer);?>
             </td>
         </tr>
     <?php } ?>

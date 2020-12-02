@@ -1,4 +1,5 @@
 <?php if (isset($providers) && is_array($providers)){ ?>
+<?php $this->load->helper('security'); ?>
 <tbody>
     <?php foreach($providers as $provider){ ?>
 
@@ -10,10 +11,10 @@
                 <?php echo $provider->id; ?>
             </td>
             <td>
-                <?php echo $provider->name; ?>
+                <?php echo xss_clean($provider->name); ?>
             </td>
             <td>
-                <?php echo $provider->document; ?>
+                <?php echo xss_clean($provider->document); ?>
             </td>
         </tr>
     <?php } ?>
