@@ -47,7 +47,7 @@
                 Entrada física
             </th>
             <th>
-                Entrada Consumo imediato
+                Entrada consumo imediato
             </th>
             <th>
                 Saída
@@ -56,7 +56,7 @@
                 Saída física
             </th>
             <th>
-                Saída Consumo Imediato
+                Saída consumo imediato
             </th>
             <th>
                 Saldo atual

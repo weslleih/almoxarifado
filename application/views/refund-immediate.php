@@ -12,7 +12,7 @@
                 Data
             </th>
             <th>
-                Quantidae
+                Quantidade
             </th>
             <th>
                 Valor
