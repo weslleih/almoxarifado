@@ -2,7 +2,7 @@
     <form role="form" class="form-inline form-table-search" method="post" action="<?php echo $action;?>">
         <div class="form-group">
             <div class="input-group">
-                <input name="term" type="search" class="form-control" id="inputProduto" placeholder="Fronecedor">
+                <input name="term" type="search" class="form-control" id="inputProduto" placeholder="Fornecedor">
                 <a href="#" class="input-group-addon"><span class="glyphicon glyphicon-search"></span></a>
             </div>
         </div>
@@ -16,13 +16,13 @@
                 Código
             </th>
             <th>
-                Fornecerdor
+                Fornecedor
             </th>
             <th>
                 Data
             </th>
             <th>
-                Quantidae
+                Quantidade
             </th>
             <th>
                 Valor

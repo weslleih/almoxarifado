@@ -1,7 +1,7 @@
 <div class="table-header">
     <form role="form" class="form-inline form-table-search" method="post" action="<?php echo $action;?>">
         <a type="button" class="btn btn-success" data-toggle="modal" data-target="#dynamicModal" href="<?php echo site_url("providers/add");?>">
-            <span class="glyphicon glyphicon-plus"></span> Fornecerdor</a>
+            <span class="glyphicon glyphicon-plus"></span> Fornecedor</a>
         <div class="form-group">
             <div class="input-group">
                 <input name="term" type="search" class="form-control" id="inputProduto" placeholder="Código, Nome ou CPF/CNPJ">
